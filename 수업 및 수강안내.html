@@ -3165,6 +3165,16 @@
   var content = root.querySelector('.hy-content');
   var searchInput = root.querySelector('#hy-nav-search-input');
   var searchStatus = root.querySelector('.hy-nav-search-status');
+
+  /* 수업안내 본문 순서를 메뉴 순서와 맞춤 */
+  if (content) {
+    var firstContentSection = content.querySelector('.hy-section');
+    ['hy-class-periods', 'hy-course-code', 'hy-special-classes', 'hy-attendance-policy'].forEach(function (id) {
+      var section = root.querySelector('#' + id);
+      if (section && firstContentSection) content.insertBefore(section, firstContentSection);
+    });
+  }
+
   var navTopLinks = nav ? Array.prototype.filter.call(nav.children, function (item) {
     return item.tagName && item.tagName.toLowerCase() === 'a';
   }) : [];
