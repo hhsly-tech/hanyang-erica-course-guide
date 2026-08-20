@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>한양대학교 ERICA 수업 및 수강안내</title>
   <style>
-    body { margin: 0; padding: 32px 20px; background: #eef2f7; }
-    @media (max-width: 520px) { body { padding: 0; background: #fff; } }
+    body { margin: 0; padding: 0; background: #eef2f7; }
+    @media (max-width: 520px) { body { background: #fff; } }
   </style>
 </head>
 <body>
@@ -28,8 +28,8 @@
     --hy-muted: #637083;
     --hy-line: #dbe3ed;
     --hy-bg: #f5f7fa;
-    max-width: 1180px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     color: var(--hy-text);
     font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
     font-size: 16px;
@@ -45,29 +45,79 @@
   }
 
   #hy-course-guide .hy-hero {
-    padding: 36px 34px;
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    padding: 0;
     color: #fff;
-    background: linear-gradient(135deg, var(--hy-blue-dark), var(--hy-blue));
+    background: var(--hy-blue);
     border-radius: 22px;
     box-shadow: 0 14px 38px rgba(7, 54, 111, .17);
+    overflow: hidden;
   }
-  #hy-course-guide .hy-eyebrow {
-    display: inline-flex; align-items: center; gap: 7px;
-    margin-bottom: 12px; padding: 5px 10px;
-    border: 1px solid rgba(255,255,255,.35); border-radius: 999px;
-    background: rgba(255,255,255,.1); font-size: 13px; font-weight: 700;
+  #hy-course-guide .hy-hero-brand-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 20px;
+    background: #fff;
+  }
+  #hy-course-guide .hy-hero-content-panel {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding: 24px 34px 22px;
+  }
+  #hy-course-guide .hy-brand-logo {
+    display: block;
+    width: 185px;
+    max-width: 100%;
+    height: auto;
+  }
+  #hy-course-guide .hy-hero-emblem {
+    display: block;
+    flex: 0 0 auto;
+    width: 90px;
+    height: auto;
+  }
+  #hy-course-guide .hy-hero-copy {
+    min-width: 0;
+    flex: 1;
+  }
+  #hy-course-guide .hy-hero-subrow {
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+  }
+  #hy-course-guide .hy-hero-subrow p {
+    flex: 1;
+  }
+  #hy-course-guide .hy-hero-meta {
+    flex: 0 0 auto;
+    margin-left: auto;
+    color: rgba(255,255,255,.9);
+    font-size: inherit;
+    line-height: inherit;
+    white-space: nowrap;
   }
   #hy-course-guide .hy-hero h1 {
     margin: 0;
     font-size: clamp(27px, 4vw, 42px);
     line-height: 1.25;
   }
+  #hy-course-guide .hy-hero-title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
   #hy-course-guide .hy-hero p {
-    margin: 12px 0 0;
+    margin: 8px 0 0;
     color: rgba(255,255,255,.88);
   }
   #hy-course-guide .hy-actions {
-    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 0;
   }
   #hy-course-guide .hy-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 7px;
@@ -265,7 +315,11 @@
     background: #f4f8fd;
   }
 
-  #hy-course-guide .hy-content { min-width: 0; }
+  #hy-course-guide .hy-content {
+    width: min(940px, 100%);
+    min-width: 0;
+    margin: 0 auto;
+  }
   #hy-course-guide .hy-section {
     scroll-margin-top: 20px;
     margin-bottom: 20px;
@@ -605,8 +659,31 @@
   @media (max-width: 860px) {
     #hy-course-guide { word-break: normal; }
     #hy-course-guide .hy-hero {
-      padding: 27px 21px;
+      display: block;
       border-radius: 16px;
+    }
+    #hy-course-guide .hy-hero-brand-panel {
+      justify-content: flex-start;
+      padding: 16px 21px;
+    }
+    #hy-course-guide .hy-hero-content-panel {
+      display: block;
+      padding: 22px 21px 20px;
+    }
+    #hy-course-guide .hy-hero-meta {
+      margin: 8px 0 0;
+      text-align: right;
+    }
+    #hy-course-guide .hy-hero-subrow {
+      display: block;
+    }
+    #hy-course-guide .hy-brand-logo {
+      width: 165px;
+    }
+    #hy-course-guide .hy-hero-title-row {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 14px;
     }
     #hy-course-guide .hy-layout { display: block; }
     #hy-course-guide .hy-nav {
@@ -641,16 +718,27 @@
 
   <!-- 01. 상단 제목 및 빠른 이동 버튼 -->
   <header class="hy-hero">
-    <div class="hy-eyebrow">HANYANG UNIVERSITY ERICA</div>
-    <h1>수업 및 수강안내</h1>
-    <p>정규학기 수업 운영과 수강신청 정책, 주요 유의사항을 확인하시기 바랍니다.</p>
-    <div class="hy-actions">
-      <a class="hy-btn hy-btn-primary" href="#">학사편람 바로가기 ↗</a>
+    <div class="hy-hero-brand-panel">
+      <img class="hy-hero-emblem" src="HYU_logo_singlecolor 원형.png" alt="한양대학교 로고">
+      <img class="hy-brand-logo" src="HYU_logotype_ERICA_blue_kor_eng.png" alt="한양대학교 ERICA">
+    </div>
+    <div class="hy-hero-content-panel">
+      <div class="hy-hero-copy">
+        <div class="hy-hero-title-row">
+          <h1>수업 및 수강안내</h1>
+          <div class="hy-actions">
+            <a class="hy-btn hy-btn-primary" href="#">학사편람 바로가기 ↗</a>
+          </div>
+        </div>
+        <div class="hy-hero-subrow">
+          <p>정규학기 수업 운영과 수강신청 정책, 주요 유의사항을 확인하시기 바랍니다.</p>
+          <div class="hy-hero-meta">2026.08.20 교육혁신처 학사운영팀</div>
+        </div>
+      </div>
     </div>
   </header>
 
   <div class="hy-notice">
-    <strong>수업 및 수강안내 모바일 환경 안내</strong>
     모바일 환경에서는 표 영역을 오른쪽으로 스크롤하여 잘린 부분을 확인할 수 있습니다.
   </div>
 
