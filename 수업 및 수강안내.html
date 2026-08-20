@@ -1,0 +1,3324 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>한양대학교 ERICA 수업 및 수강안내</title>
+  <style>
+    body { margin: 0; padding: 32px 20px; background: #eef2f7; }
+    @media (max-width: 520px) { body { padding: 0; background: #fff; } }
+  </style>
+</head>
+<body>
+
+<style>
+  /*
+    한양대학교 ERICA 수업 및 수강안내
+    - 모든 스타일은 #hy-course-guide 내부로 한정
+    - 학교 게시판의 다른 요소와 CSS 충돌을 최소화
+  */
+  #hy-course-guide {
+    --hy-blue: #0b4da2;
+    --hy-blue-dark: #07366f;
+    --hy-blue-soft: #eef5ff;
+    --hy-red: #cf2e2e;
+    --hy-orange: #b75b00;
+    --hy-green: #177245;
+    --hy-text: #202632;
+    --hy-muted: #637083;
+    --hy-line: #dbe3ed;
+    --hy-bg: #f5f7fa;
+    max-width: 1180px;
+    margin: 0 auto;
+    color: var(--hy-text);
+    font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    word-break: keep-all;
+  }
+
+  #hy-course-guide * { box-sizing: border-box; }
+  #hy-course-guide a { color: inherit; }
+  #hy-course-guide .hy-sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+
+  #hy-course-guide .hy-hero {
+    padding: 36px 34px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--hy-blue-dark), var(--hy-blue));
+    border-radius: 22px;
+    box-shadow: 0 14px 38px rgba(7, 54, 111, .17);
+  }
+  #hy-course-guide .hy-eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    margin-bottom: 12px; padding: 5px 10px;
+    border: 1px solid rgba(255,255,255,.35); border-radius: 999px;
+    background: rgba(255,255,255,.1); font-size: 13px; font-weight: 700;
+  }
+  #hy-course-guide .hy-hero h1 {
+    margin: 0;
+    font-size: clamp(27px, 4vw, 42px);
+    line-height: 1.25;
+  }
+  #hy-course-guide .hy-hero p {
+    margin: 12px 0 0;
+    color: rgba(255,255,255,.88);
+  }
+  #hy-course-guide .hy-actions {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
+  }
+  #hy-course-guide .hy-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    min-height: 44px; padding: 10px 15px; border-radius: 10px;
+    border: 1px solid transparent; text-decoration: none; font-weight: 750;
+    cursor: pointer; font: inherit;
+  }
+  #hy-course-guide .hy-btn-primary {
+    color: var(--hy-blue-dark); background: #fff;
+  }
+  #hy-course-guide .hy-btn-ghost {
+    color: #fff;
+    border-color: rgba(255,255,255,.45);
+    background: rgba(255,255,255,.08);
+  }
+  #hy-course-guide .hy-doc-actions {
+    margin: 0 0 18px;
+  }
+  #hy-course-guide .hy-doc-actions .hy-btn {
+    color: var(--hy-blue-dark);
+    border-color: #c9d9ed;
+    background: var(--hy-blue-soft);
+    font-weight: 800;
+  }
+  #hy-course-guide .hy-doc-actions .hy-btn:hover,
+  #hy-course-guide .hy-doc-actions .hy-btn:focus {
+    border-color: var(--hy-blue);
+    background: #e3efff;
+  }
+
+  #hy-course-guide .hy-layout {
+    display: grid;
+    grid-template-columns: 255px minmax(0, 1fr);
+    gap: 26px;
+    align-items: start;
+    margin-top: 22px;
+  }
+
+  /* 좌측 내비게이터 */
+  #hy-course-guide .hy-nav {
+    position: sticky;
+    top: 18px;
+    max-height: calc(100vh - 36px);
+    max-height: calc(100dvh - 36px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding: 13px;
+    border: 1px solid var(--hy-line);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(28, 45, 69, .06);
+  }
+  #hy-course-guide .hy-nav::-webkit-scrollbar {
+    width: 8px;
+  }
+  #hy-course-guide .hy-nav::-webkit-scrollbar-thumb {
+    border: 2px solid #fff;
+    border-radius: 999px;
+    background: #c6d2df;
+  }
+  #hy-course-guide .hy-nav-title {
+    padding: 8px 10px 11px;
+    color: var(--hy-muted);
+    font-size: 13px;
+    font-weight: 800;
+  }
+  #hy-course-guide .hy-nav-search {
+    margin: 0 0 10px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #edf2f7;
+  }
+  #hy-course-guide .hy-nav-search input {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 11px;
+    border: 1px solid var(--hy-line);
+    border-radius: 9px;
+    background: #f7f9fc;
+    color: var(--hy-text);
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.4;
+    outline: none;
+  }
+  #hy-course-guide .hy-nav-search input:focus {
+    border-color: var(--hy-blue);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(11, 77, 162, .11);
+  }
+  #hy-course-guide .hy-nav-search-status {
+    min-height: 15px;
+    margin-top: 5px;
+    color: var(--hy-muted);
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  #hy-course-guide .hy-menu-grid {
+    display: grid;
+    gap: 8px;
+  }
+  #hy-course-guide .hy-nav-category {
+    margin: 0 0 8px;
+    padding: 4px;
+    border: 1px solid #e3ebf5;
+    border-radius: 12px;
+    background: #f8fbff;
+  }
+  #hy-course-guide .hy-nav-category > summary {
+    color: var(--hy-blue-dark);
+    border: 1px solid #edf2f7;
+    background: #fff;
+    font-weight: 850;
+  }
+  #hy-course-guide .hy-nav-category > .hy-nav-sub {
+    margin-left: 0;
+    padding-left: 8px;
+    border-left: 2px solid #c8dbf1;
+  }
+  #hy-course-guide .hy-nav-sub .hy-nav-group > summary {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-size: 13px;
+  }
+  #hy-course-guide mark.hy-search-highlight {
+    padding: 0 .08em;
+    border-radius: 3px;
+    background: #fff176;
+    color: inherit;
+    box-shadow: 0 0 0 1px rgba(183, 91, 0, .16);
+  }
+  #hy-course-guide .hy-nav > a,
+  #hy-course-guide .hy-nav-group > summary {
+    display: block;
+    margin: 2px 0;
+    padding: 9px 32px 9px 10px;
+    border-radius: 9px;
+    color: #415068;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 680;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+  #hy-course-guide .hy-nav > a {
+    padding-right: 10px;
+  }
+  #hy-course-guide .hy-nav > a:hover,
+  #hy-course-guide .hy-nav-group > summary:hover {
+    color: var(--hy-blue);
+    background: var(--hy-blue-soft);
+  }
+  #hy-course-guide .hy-nav-group {
+    margin: 2px 0;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    overflow: visible;
+  }
+  #hy-course-guide .hy-nav-group > summary {
+    position: relative;
+    cursor: pointer;
+    list-style: none;
+  }
+  #hy-course-guide .hy-nav-group > summary::-webkit-details-marker { display: none; }
+  #hy-course-guide .hy-nav-group > summary::after {
+    content: "+";
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    color: #7a8799;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  #hy-course-guide .hy-nav-group[open] > summary::after { content: "−"; }
+  #hy-course-guide .hy-nav-group > summary:hover::after { color: var(--hy-blue); }
+  #hy-course-guide .hy-nav-sub {
+    margin: 3px 0 7px 10px;
+    padding: 3px 0 3px 10px;
+    border-left: 2px solid #d7e5f7;
+  }
+  #hy-course-guide .hy-nav-sub a {
+    display: block;
+    padding: 6px 8px;
+    border-radius: 7px;
+    color: #68758a;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  #hy-course-guide .hy-nav-sub a:hover {
+    color: var(--hy-blue);
+    background: #f4f8fd;
+  }
+
+  #hy-course-guide .hy-content { min-width: 0; }
+  #hy-course-guide .hy-section {
+    scroll-margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 26px;
+    border: 1px solid var(--hy-line);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(27, 46, 73, .045);
+  }
+  #hy-course-guide .hy-section-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  #hy-course-guide .hy-section h2 {
+    margin: 0;
+    font-size: 23px;
+    line-height: 1.35;
+  }
+  #hy-course-guide .hy-kicker {
+    margin-bottom: 3px;
+    color: var(--hy-blue);
+    font-size: 13px;
+    font-weight: 850;
+    letter-spacing: .04em;
+  }
+  #hy-course-guide .hy-section-desc {
+    margin: 5px 0 0;
+    color: var(--hy-muted);
+    font-size: 14px;
+  }
+  #hy-course-guide .hy-danger-text {
+    margin: 4px 0 18px;
+    color: var(--hy-red);
+    font-size: 14px;
+    font-weight: 750;
+  }
+  #hy-course-guide .hy-text-center {
+    text-align: center;
+  }
+
+  #hy-course-guide .hy-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  #hy-course-guide .hy-card {
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid var(--hy-line);
+    border-radius: 14px;
+    background: var(--hy-bg);
+  }
+  #hy-course-guide .hy-card-label {
+    color: var(--hy-blue);
+    font-size: 13px;
+    font-weight: 850;
+  }
+  #hy-course-guide .hy-card-date {
+    max-width: 100%;
+    margin-top: 4px;
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 850;
+    white-space: normal;
+    text-wrap: balance;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  #hy-course-guide .hy-card-note {
+    margin-top: 3px;
+    color: var(--hy-muted);
+    font-size: 13px;
+  }
+
+  #hy-course-guide .hy-notice {
+    margin: 12px 0;
+    padding: 15px 16px;
+    border-left: 5px solid var(--hy-blue);
+    border-radius: 8px;
+    background: var(--hy-blue-soft);
+  }
+  #hy-course-guide .hy-notice strong {
+    display: block;
+    margin-bottom: 3px;
+  }
+  #hy-course-guide .hy-notice-danger {
+    border-left-color: var(--hy-red);
+    background: #fff1f1;
+  }
+  #hy-course-guide .hy-notice-warning {
+    border-left-color: var(--hy-orange);
+    background: #fff7eb;
+  }
+  #hy-course-guide .hy-notice-readable p {
+    margin: 0 0 8px;
+  }
+  #hy-course-guide .hy-notice-readable ol {
+    margin: 8px 0 0;
+    padding-left: 23px;
+  }
+  #hy-course-guide .hy-notice-readable li {
+    margin: 7px 0;
+  }
+  #hy-course-guide .hy-notice-readable .hy-note-subtitle {
+    margin-top: 10px;
+    font-weight: 800;
+  }
+
+  /* 본문 펼침 메뉴 */
+  #hy-course-guide .hy-accordion {
+    scroll-margin-top: 80px;
+    margin: 10px 0;
+    border: 1px solid var(--hy-line);
+    border-radius: 12px;
+    background: #fff;
+    overflow: hidden;
+  }
+  #hy-course-guide .hy-accordion > summary {
+    position: relative;
+    padding: 15px 46px 15px 16px;
+    cursor: pointer;
+    font-weight: 780;
+    list-style: none;
+  }
+  #hy-course-guide .hy-accordion > summary::-webkit-details-marker { display: none; }
+  #hy-course-guide .hy-accordion > summary::after {
+    content: "+";
+    position: absolute;
+    right: 17px;
+    top: 12px;
+    color: var(--hy-blue);
+    font-size: 22px;
+    font-weight: 500;
+  }
+  #hy-course-guide .hy-accordion[open] > summary::after { content: "−"; }
+  #hy-course-guide .hy-department-accordion > summary {
+    padding-left: 46px;
+    text-align: center;
+  }
+  #hy-course-guide .hy-detail-body {
+    padding: 0 16px 16px;
+    color: #48566b;
+  }
+  #hy-course-guide .hy-detail-body p { margin: 0; }
+  #hy-course-guide .hy-detail-body ul {
+    margin: 5px 0 0;
+    padding-left: 21px;
+  }
+  #hy-course-guide .hy-detail-body ol {
+    margin: 5px 0 0;
+    padding-left: 21px;
+  }
+  #hy-course-guide .hy-placeholder {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 9px;
+    color: #69758a;
+    background: #f7f9fc;
+    font-size: 14px;
+  }
+
+  #hy-course-guide .hy-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--hy-line);
+    border-radius: 12px;
+  }
+  #hy-course-guide table {
+    width: 100%;
+    min-width: 680px;
+    border-collapse: collapse;
+  }
+  #hy-course-guide .hy-table-wide {
+    min-width: 960px;
+  }
+  #hy-course-guide th,
+  #hy-course-guide td {
+    padding: 12px 13px;
+    border-bottom: 1px solid var(--hy-line);
+    text-align: left;
+    font-size: 14px;
+  }
+  #hy-course-guide th {
+    color: #344156;
+    background: #f2f5f9;
+  }
+  #hy-course-guide .hy-table-center th,
+  #hy-course-guide .hy-table-center td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  #hy-course-guide .hy-table-accent {
+    color: var(--hy-blue-dark);
+    font-weight: 850;
+  }
+  #hy-course-guide .hy-table-blue-head thead th {
+    color: #fff;
+    background: var(--hy-blue);
+  }
+  #hy-course-guide .hy-curriculum-table {
+    min-width: 0;
+    table-layout: fixed;
+  }
+  #hy-course-guide .hy-curriculum-table .hy-col-course { width: 15%; }
+  #hy-course-guide .hy-curriculum-table .hy-col-grade { width: 6%; }
+  #hy-course-guide .hy-curriculum-table .hy-col-year { width: 5.2%; }
+  #hy-course-guide .hy-curriculum-table .hy-col-note { width: 11.4%; }
+  #hy-course-guide .hy-curriculum-table th,
+  #hy-course-guide .hy-curriculum-table td {
+    padding: 6px 3px;
+    border: 1px solid var(--hy-line);
+    font-size: 11px;
+    line-height: 1.25;
+  }
+  #hy-course-guide .hy-curriculum-table .hy-year-cell {
+    font-size: 10px;
+  }
+  #hy-course-guide .hy-curriculum-past {
+    background: repeating-linear-gradient(45deg, #eef1f5 0, #eef1f5 2px, #fff 2px, #fff 5px);
+  }
+  #hy-course-guide .hy-curriculum-active {
+    background: #c8cdd4;
+  }
+  #hy-course-guide .hy-curriculum-close {
+    background: repeating-linear-gradient(90deg, #adb5bf 0, #adb5bf 2px, #d6dbe1 2px, #d6dbe1 5px);
+  }
+  #hy-course-guide .hy-curriculum-current {
+    border-left: 3px solid #202632 !important;
+    border-right: 3px solid #202632 !important;
+    background: #c8cdd4;
+    color: var(--hy-blue-dark);
+    font-weight: 850;
+  }
+  #hy-course-guide .hy-curriculum-current-start {
+    border-top: 3px solid #202632 !important;
+  }
+  #hy-course-guide .hy-curriculum-current-end {
+    border-bottom: 3px solid #202632 !important;
+  }
+  #hy-course-guide .hy-attendance-table {
+    min-width: 1280px;
+  }
+  #hy-course-guide .hy-attendance-table th,
+  #hy-course-guide .hy-attendance-table td {
+    vertical-align: middle;
+  }
+  #hy-course-guide .hy-attendance-table .hy-policy-reason { width: 24%; }
+  #hy-course-guide .hy-attendance-table .hy-policy-period { width: 12%; }
+  #hy-course-guide .hy-attendance-table .hy-policy-mode { width: 9%; }
+  #hy-course-guide .hy-attendance-table .hy-policy-evidence { width: 21%; }
+  #hy-course-guide .hy-attendance-table .hy-policy-basis { width: 9%; }
+  #hy-course-guide .hy-policy-clauses p { margin: 0 0 10px !important; }
+  #hy-course-guide .hy-policy-form {
+    min-width: 0;
+    table-layout: fixed;
+  }
+  #hy-course-guide .hy-policy-form th,
+  #hy-course-guide .hy-policy-form td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  #hy-course-guide .hy-policy-form .hy-form-writing-area {
+    height: 130px;
+    text-align: left;
+    vertical-align: top;
+  }
+  #hy-course-guide .hy-policy-pdf {
+    margin-top: 18px;
+  }
+  #hy-course-guide .hy-policy-pdf .hy-doc-actions {
+    margin-bottom: 18px;
+  }
+  #hy-course-guide .hy-policy-pages {
+    display: grid;
+    gap: 18px;
+  }
+  #hy-course-guide .hy-policy-page {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--hy-line);
+    border-radius: 8px;
+    background: #fff;
+  }
+  #hy-course-guide .hy-policy-old-content { display: none; }
+  #hy-course-guide .hy-period-table {
+    min-width: 0;
+    table-layout: fixed;
+  }
+  #hy-course-guide .hy-period-table th,
+  #hy-course-guide .hy-period-table td {
+    padding: 8px 6px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  #hy-course-guide .hy-period-table th:nth-child(odd),
+  #hy-course-guide .hy-period-table td:nth-child(odd) { width: 8%; }
+  #hy-course-guide .hy-period-table th:nth-child(even),
+  #hy-course-guide .hy-period-table td:nth-child(even) { width: 17%; }
+  #hy-course-guide .hy-subsection-title {
+    margin: 24px 0 8px;
+    padding: 10px 12px;
+    border-left: 4px solid var(--hy-blue);
+    border-radius: 5px;
+    background: var(--hy-blue-soft);
+    color: var(--hy-blue-dark);
+  }
+  #hy-course-guide .hy-special-summary,
+  #hy-course-guide .hy-special-types {
+    min-width: 0;
+    table-layout: fixed;
+  }
+  #hy-course-guide .hy-special-summary th,
+  #hy-course-guide .hy-special-summary td,
+  #hy-course-guide .hy-special-types th,
+  #hy-course-guide .hy-special-types td {
+    vertical-align: top;
+  }
+  #hy-course-guide .hy-special-summary th:first-child,
+  #hy-course-guide .hy-special-summary td:first-child { width: 18%; }
+  #hy-course-guide .hy-special-summary th:nth-child(2),
+  #hy-course-guide .hy-special-summary td:nth-child(2) { width: 27%; }
+  #hy-course-guide tr:last-child td { border-bottom: 0; }
+
+  #hy-course-guide .hy-backtop {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--hy-blue);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 750;
+  }
+
+  @media (max-width: 860px) {
+    #hy-course-guide { word-break: normal; }
+    #hy-course-guide .hy-hero {
+      padding: 27px 21px;
+      border-radius: 16px;
+    }
+    #hy-course-guide .hy-layout { display: block; }
+    #hy-course-guide .hy-nav {
+      position: relative;
+      top: auto;
+      z-index: 10;
+      max-height: 62vh;
+      max-height: 62dvh;
+      margin-bottom: 16px;
+      padding: 10px;
+      border-radius: 14px;
+    }
+    #hy-course-guide .hy-nav-title { display: block; }
+    #hy-course-guide .hy-section {
+      padding: 21px 17px;
+      border-radius: 14px;
+      scroll-margin-top: 20px;
+    }
+    #hy-course-guide .hy-cards { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    #hy-course-guide .hy-actions { display: grid; }
+    #hy-course-guide .hy-btn { width: 100%; }
+    #hy-course-guide .hy-section-head { display: block; }
+  }
+</style>
+
+
+<div id="hy-course-guide">
+  <div id="hy-top" class="hy-sr-only">수업 및 수강안내 시작</div>
+
+  <!-- 01. 상단 제목 및 빠른 이동 버튼 -->
+  <header class="hy-hero">
+    <div class="hy-eyebrow">HANYANG UNIVERSITY ERICA</div>
+    <h1>수업 및 수강안내</h1>
+    <p>정규학기 수업 운영과 수강신청 정책, 주요 유의사항을 확인하시기 바랍니다.</p>
+    <div class="hy-actions">
+      <a class="hy-btn hy-btn-primary" href="#">학사편람 바로가기 ↗</a>
+    </div>
+  </header>
+
+  <div class="hy-notice">
+    <strong>수업 및 수강안내 모바일 환경 안내</strong>
+    모바일 환경에서는 표 영역을 오른쪽으로 스크롤하여 잘린 부분을 확인할 수 있습니다.
+  </div>
+
+  <div class="hy-layout">
+
+    <nav class="hy-nav" aria-label="수업 및 수강안내 목차">
+      <div class="hy-nav-title">안내 메뉴</div>
+      <div class="hy-nav-search">
+        <label class="hy-sr-only" for="hy-nav-search-input">안내 메뉴 검색</label>
+        <input id="hy-nav-search-input" type="search" placeholder="검색" autocomplete="off">
+        <div class="hy-nav-search-status" aria-live="polite"></div>
+      </div>
+
+      <div class="hy-menu-grid">
+        <details class="hy-nav-group hy-nav-category" open>
+          <summary>수업안내</summary>
+          <div class="hy-nav-sub">
+            <a href="#hy-attendance-policy">출석 인정 내규</a>
+            <a href="#hy-class-periods">강의시간교시체계</a>
+            <a href="#hy-course-code">학수번호/수업코드</a>
+            <a href="#hy-special-classes">특수수업</a>
+          </div>
+        </details>
+
+        <details class="hy-nav-group hy-nav-category" open>
+          <summary>수강신청안내</summary>
+          <div class="hy-nav-sub">
+            <a href="#hy-schedule">수강신청 일정</a>
+            <details class="hy-nav-group">
+              <summary>수강신청 관련 유의사항</summary>
+              <div class="hy-nav-sub">
+                <a href="#hy-curriculum-check">1) 이수 교육과정 확인</a>
+                <a href="#hy-department-restriction">2) 학과 교과목 이수제한 관련</a>
+                <a href="#hy-parent-course-ban">3) 교수-자녀간 수강불가</a>
+                <a href="#hy-mock-cancel">4) 모의수강신청 참여자 수강신청 삭제</a>
+                <a href="#hy-caution-equivalent-course">5) 동일/대치 교과목 안내</a>
+                <a href="#hy-macro-restriction">6) 매크로 프로그램 사용 제한</a>
+                <a href="#hy-liberal-credit-limit">7) 개강 전 교양학점 신청 제한</a>
+                <a href="#hy-caution-code-share">8) 학과간 공통 교육과정(Code Share)</a>
+                <a href="#hy-system-failure">9) 수강신청 시스템 장애 발생시</a>
+                <a href="#hy-course-sale">10) 강의 매매 관련</a>
+                <a href="#hy-cross-campus">11) ERICA-서울 교차수강신청 안내</a>
+                <a href="#hy-increase-request">12) 증원신청 시스템 이용 안내</a>
+              </div>
+            </details>
+            <a href="#hy-online">수강신청과 온라인 환경</a>
+            <a href="#hy-credits">수강신청 가능 학점</a>
+            <a href="#hy-graduation">졸업요건 확인 관련</a>
+            <details class="hy-nav-group">
+              <summary>강좌별 세부 정보 확인 방법</summary>
+              <div class="hy-nav-sub">
+                <a href="#hy-syllabus">1) 수업계획서 및 교과목개요서 확인</a>
+                <a href="#hy-seat-allocation">2) 전공 및 교양 교과목 배정인원 확인</a>
+                <a href="#hy-multiple-major">3) 다전공 배정인원 관련</a>
+                <a href="#hy-course-restriction">4) 강좌별 이수제한 확인</a>
+                <a href="#hy-code-share">5) 학과간공통교과목(Code Share) 확인</a>
+              </div>
+            </details>
+            <a href="#hy-retake">재수강 안내</a>
+            <a href="#hy-grading">성적평가방법 안내</a>
+            <a href="#hy-course-closure">교과목 폐강 기준 안내</a>
+            <a href="#hy-course-withdrawal">수강포기 관련 안내</a>
+            <details class="hy-nav-group">
+              <summary>기타 제도별 유의사항</summary>
+              <div class="hy-nav-sub">
+                <a href="#hy-online-course">1) 온라인 강좌 수강 안내</a>
+                <a href="#hy-pf-course">2) P/F 강좌 수강 안내</a>
+                <a href="#hy-undergrad-grad">3) 학부-대학원 공통 교육과정 교과목 수강 안내</a>
+                <a href="#hy-english-only">4) 영어전용강좌 의무 이수 안내</a>
+                <a href="#hy-required-english">5) 영어 교양필수 강좌 안내</a>
+                <a href="#hy-icpbl">6) IC-PBL강좌 의무 이수 안내</a>
+                <a href="#hy-liberal-arts">7) 교양선택 의무 이수 학점 안내</a>
+                <a href="#hy-service-industry">8) 사회봉사 및 산학협력영역 의무 이수 안내</a>
+                <a href="#hy-career-course">9) 진로 및 취업교과목 의무이수 안내</a>
+                <a href="#hy-engineering-accreditation">10) 공학인증 대상 학생의 수강 신청</a>
+              </div>
+            </details>
+          </div>
+        </details>
+      </div>
+    </nav>
+
+    <main class="hy-content">
+<!-- 수업안내 1. 출석 인정 내규 -->
+      <section id="hy-attendance-policy" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수업안내 · ATTENDANCE POLICY</div>
+            <h2>출석 인정 내규</h2>
+            <p class="hy-section-desc">출석인정 내규 개정(안)의 원문 내용을 확인할 수 있습니다.</p>
+          </div>
+        </div>
+
+        <div class="hy-policy-pdf">
+          <div class="hy-doc-actions">
+            <a class="hy-btn" href="출석인정내규_20260121개정.pdf" download>PDF 다운로드 ↓</a>
+          </div>
+          <div class="hy-policy-pages">
+            <img class="hy-policy-page" src="출석인정내규_이미지/page_01.png" alt="출석인정 내규 1쪽">
+            <img class="hy-policy-page" src="출석인정내규_이미지/page_02.png" alt="출석인정 내규 2쪽">
+            <img class="hy-policy-page" src="출석인정내규_이미지/page_03.png" alt="출석인정 내규 3쪽">
+          </div>
+        </div>
+
+        <div class="hy-policy-old-content" aria-hidden="true">
+        <p><strong>출석인정 내규 개정(안)</strong> 개정일 : 2026.01.21.</p>
+
+        <p><strong>제1조(목적)</strong> 이 내규는 학칙 제35조 3항 및 학칙 시행세칙I 제23조 2항에 의거 출석인정의 세부사항을 규정함을 목적으로 한다.</p>
+        <p><strong>제2조(허용 범위)</strong> 본교 출석인정에만 적용하며, 다른 규정에 특별히 정하여진 경우를 제외하고는 이 내규가 정하는 바에 의한다.</p>
+        <p><strong>제3조(신청 시기 및 방법)</strong> ① 출석을 인정받고자 하는 학생은 온라인공결시스템을 통하여 공결신청을 입력하고 단과대학의 승인을 득한 후 공결신청서를 출력한다. ② 공결신청서는 결석사유 발생 전후 7일 이내에 담당교강사에게 제출하되 최종마감은 해당학기 종강일로 한다.</p>
+        <p><strong>제4조(출석인정 절차)</strong> ① 공결을 승인 받은 수업 시간은 출석으로 인정한다. ② 다음 표의 각 항의 1에 해당할 경우 증빙서류를 제출하여 확인된 경우에 한하여 인정한다.</p>
+
+        <div class="hy-table-wrap">
+              <table class="hy-table-center hy-table-wide hy-attendance-table">
+                <thead>
+                  <tr>
+                    <th class="hy-policy-reason" rowspan="2" scope="col">출석 불가<br>인정사유</th>
+                    <th class="hy-policy-period" rowspan="2" scope="col">인정기간<br>(공휴일포함)</th>
+                    <th colspan="2" scope="colgroup">원격강의</th>
+                    <th class="hy-policy-mode" rowspan="2" scope="col">대면<br>강의</th>
+                    <th class="hy-policy-evidence" rowspan="2" scope="col">증빙서류</th>
+                    <th class="hy-policy-basis" rowspan="2" scope="col">시행세칙<br>인정근거</th>
+                  </tr>
+                  <tr>
+                    <th class="hy-policy-mode" scope="col">실시간<br>화상강의</th>
+                    <th class="hy-policy-mode" scope="col">온라인<br>녹화강의</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>병역법에 의한 동원소집 또는<br>병역판정검사(의무복무기간 제외)</td>
+                    <td>해당일</td>
+                    <td>녹화영상<br>100% 시청시<br>출석인정</td>
+                    <td>X</td>
+                    <td>인정</td>
+                    <td>&nbsp;</td>
+                    <td>23조<br>2항 1호</td>
+                  </tr>
+                  <tr>
+                    <td>의무복무대체소집<br>(의무복무대체와 관련되는<br>소집 절차)</td>
+                    <td>해당일</td>
+                    <td>녹화영상<br>100% 시청시<br>출석인정</td>
+                    <td>X</td>
+                    <td>인정</td>
+                    <td>관련 통지서</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>입원기간 또는 법정전염병<br>확진으로 인한 격리</td>
+                    <td>해당기간<br>(최대4주까지 인정하며,<br>4주 초과시에는<br>병가휴학실시)</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>공통 : 병명이 명시된 진단서<br><br>입원의 경우에는 입퇴원확인서,<br><br>격리의 경우는 진단서에<br>격리 필요기간이 명시되어야 함.</td>
+                    <td>23조<br>2항 1호</td>
+                  </tr>
+                  <tr>
+                    <td>조·부모(외가, 처가포함), 형제자매,<br>배우자 및 자녀의 사망</td>
+                    <td>7일 이내<br>(토‧일요일 포함)</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>사망진단서 및 가족관계 확인서</td>
+                    <td>23조<br>2항 2호</td>
+                  </tr>
+                  <tr>
+                    <td>총장이 부득이한 사유로<br>인정하는 경우</td>
+                    <td>해당기간</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>관련 증빙서류</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>가&nbsp; 여학생의 생리</td>
+                    <td>해당 없음</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>인정</td>
+                    <td>없음</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>나&nbsp; 교직이수자의 교육실습</td>
+                    <td>해당기간</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>없음<br>(단, 신청기간이 학생의 학적데이터에 입력된 교육실습기간과 일치하지 않을 경우 신청이 불가능)</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>다&nbsp; 체육특기자 대회참가<br>(소속 대학과 체육부실에서<br>허가한 자)</td>
+                    <td>해당기간</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>일정통보서 등</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>라&nbsp; 졸업예정자로서 조기취업</td>
+                    <td>해당기간</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>관련 증빙서류<br>(재직증명서 및 건강보험자격득실확인서<br>(인턴의 경우는 채용전환형임이 명시된<br>인턴 채용증명서 포함)</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>마&nbsp; COVID19 백신 접종</td>
+                    <td>접종 당일</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>백신접종예약확인서 등</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>바&nbsp; COVID19 백신 접종 후<br>이상반응이 있는 경우</td>
+                    <td>접종 익일(1일)</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>백신접종완료증명서,<br>이상반응내역을 기술한 사유서(별첨 서식 이용) 등</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>사&nbsp; 본인 결혼</td>
+                    <td>7일 이내<br>(토‧일요일 포함)</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>청첩장 및 혼인관계증명서</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>아&nbsp; 출산<br>본인</td>
+                    <td>20일 이내<br>(토‧일요일 포함)</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>의료기관에서 발급한 출산 관련 증빙서류</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>아&nbsp; 출산<br>배우자</td>
+                    <td>10일 이내<br>(토‧일요일 포함)</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>의료기관에서 발급한 출산 관련 증빙서류 및 가족관계증명서</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                  <tr>
+                    <td>자&nbsp; 소속대학장이 불가피한 사유가 있다고 인정하여 허가한 자<br>(COVID19 백신 접종 후 이상반응이 2일 이상 계속되는 경우에도 소속대학장이 판단하여 인정 가능)</td>
+                    <td>해당기간</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>인정</td>
+                    <td>관련 증빙서류<br>(COVID19 백신 접종 후 이상반응이 있는 경우에는 백신접종완료증명서, 이상반응내역을 기술한 사유서 등)</td>
+                    <td>23조<br>2항 3호</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <p><strong>제5조(기타사항)</strong> ① 공결 출석인정기간은 8주(총 수업일수의 2분의 1)를 초과할 수 없으며, 강의담당교수가 필요하다고 인정하는 경우 출석 인정기간 동안 학칙 제36조(학업성적)에 의거하여 해당학생 성적을 평가할 수 있다. ② 출석인정을 위한 증빙서류가 위조되었을 경우 해당 교과목 성적은 취소한다. ③ 취업사유로 출석 인정된 학생의 경우에는 기말고사 전에 증빙서류를 재 제출하여 확인한다. ④ 체육특기자를 포함한 운동선수는 위 각항을 따르되, 총 수업일수의 2분의 1이상을 의무출석하여야 한다. ⑤ 공결을 승인받은 학생에 대하여 수업결손이 발생하지 않도록 교강사는 학습자료 등을 제공 하고, 예비군 훈련으로 출석 인정을 받은 학생에 대해서는 반드시 제공하도록 한다. ⑥ 총장이 부득이한 사유로 인정하는 경우 라. 졸업예정자로서 조기취업 증빙서류 중 건강보험자격득실확인서는 기초생활수급자의 경우 기타 사회보험 가입 증명서, 해외취업자의 경우 해당 국가 취업비자 또는 이에 준하는 공적 증명서로 대체할 수 있다.</p>
+        <p><strong>부칙</strong> 제1조(시행일) 이 규정은 2016년 9월 1일부터 시행한다. <strong>부칙</strong> 제1조(시행일) 이 규정은 2019년 9월 25일부터 시행한다. <strong>부칙</strong> 제1조(시행일) 이 규정은 2021년 8월 1일부터 시행한다. 제2조(경과조치) 제4조(출석인정)과 제5조(기타사항) 1항은 승인일부터 시행한다. <strong>부칙</strong> 제1조(시행일) 이 규정은 2023년 9월 1일부터 시행한다. <strong>부칙</strong> 제1조(시행일) 이 규정은 2025년 9월 1일부터 시행한다. <strong>부칙</strong> 제1조(시행일) 이 규정은 2026년 3월 1일부터 시행한다.</p>
+        <p><strong>[서식] COVID19 백신 접종 후 이상반응으로 인한 출석인정 요청 사유서</strong></p>
+        <p><strong>COVID19 백신 접종 후 이상반응으로 인한 출석인정 요청 사유서</strong></p>
+        <p><strong>신청자(학생) 정보</strong></p>
+        <div class="hy-table-wrap">
+          <table class="hy-table-center hy-policy-form">
+                <thead>
+                  <tr>
+                    <th scope="col">단과대학</th>
+                    <th scope="col">학과</th>
+                    <th scope="col">학번(10자리)</th>
+                    <th scope="col">성명</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </tbody>
+          </table>
+        </div>
+        <p><strong>출석인정 요청 사유(COVID19 백신 접종 후 이상반응 기재)</strong></p>
+        <div class="hy-table-wrap">
+          <table class="hy-table-center hy-policy-form">
+                <tbody>
+                  <tr>
+                    <th scope="row">백신 접종일</th>
+                    <td>년</td>
+                    <td>월</td>
+                    <td>일</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">이상반응 해당기간</th>
+                    <td>년&nbsp;&nbsp;&nbsp;월&nbsp;&nbsp;&nbsp;일 ~</td>
+                    <td>년&nbsp;&nbsp;&nbsp;월&nbsp;&nbsp;&nbsp;일</td>
+                    <td>(총____일간)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">이상반응에 대하여 가급적 구체적으로 서술</th>
+                    <td class="hy-form-writing-area" colspan="3">&nbsp;</td>
+                  </tr>
+                </tbody>
+          </table>
+        </div>
+        </div>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 수업안내 2. 강의시간교시체계 -->
+      <section id="hy-class-periods" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수업안내 · CLASS PERIODS</div>
+            <h2>강의시간교시체계</h2>
+          </div>
+        </div>
+
+        <p><strong>교시체계안내</strong></p>
+        <p>75분 수업(75분수업 + 15분 휴식)을 도입하여 실시함에 따라 1교시가 30분 단위로 운영됩니다.</p>
+
+        <p><strong>수업교시표</strong></p>
+        <div class="hy-table-wrap">
+          <table class="hy-table-center hy-period-table">
+            <thead>
+              <tr>
+                <th scope="col">교시</th>
+                <th scope="col">시간</th>
+                <th scope="col">교시</th>
+                <th scope="col">시간</th>
+                <th scope="col">교시</th>
+                <th scope="col">시간</th>
+                <th scope="col">교시</th>
+                <th scope="col">시간</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>08:00~08:30</td><td>9</td><td>12:00~12:30</td><td>17</td><td>16:00~16:30</td><td>25</td><td>20:00~20:30</td></tr>
+              <tr><td>2</td><td>08:30~09:00</td><td>10</td><td>12:30~13:00</td><td>18</td><td>16:30~17:00</td><td>26</td><td>20:30~21:00</td></tr>
+              <tr><td>3</td><td>09:00~09:30</td><td>11</td><td>13:00~13:30</td><td>19</td><td>17:00~17:30</td><td>27</td><td>21:00~21:30</td></tr>
+              <tr><td>4</td><td>09:30~10:00</td><td>12</td><td>13:30~14:00</td><td>20</td><td>17:30~18:00</td><td>28</td><td>21:30~22:00</td></tr>
+              <tr><td>5</td><td>10:00~10:30</td><td>13</td><td>14:00~14:30</td><td>21</td><td>18:00~18:30</td><td>29</td><td>22:00~22:30</td></tr>
+              <tr><td>6</td><td>10:30~11:00</td><td>14</td><td>14:30~15:00</td><td>22</td><td>18:30~19:00</td><td>30</td><td>22:30~23:00</td></tr>
+              <tr><td>7</td><td>11:00~11:30</td><td>15</td><td>15:00~15:30</td><td>23</td><td>19:00~19:30</td><td>31</td><td>23:00~23:30</td></tr>
+              <tr><td>8</td><td>11:30~12:00</td><td>16</td><td>15:30~16:00</td><td>24</td><td>19:30~20:00</td><td>32</td><td>23:30~24:00</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>※ 1~2교시는 대학원 수업 시간대이며, 3교시부터는 ERICA 학부 수업이 진행되고, 19교시 이후는 일과 후입니다.</p>
+        <p>모든 교시가 30분 단위이므로 1시간 수업은 2개교시, 75분 수업은 3개교시가 배정됩니다.</p>
+        <p>1시간 및 2시간 수업의 휴식시간은 50분 수업 후 10분 휴식으로 운영됩니다. 다만, 이론수업 중 3시간 이상의 수업에만 75분 수업제를 적용하며 75분 수업 후 15분 휴식으로 운영됩니다.</p>
+
+        <div class="hy-notice hy-notice-warning">
+          <strong>만남의 시간: 매주 수요일 13:00~15:00</strong>
+          교수님과 학생 간의 상담 및 과내 행사 등을 진행하기 위하여 ERICA 캠퍼스 전체 학부 및 대학원의 수업이 대부분 이루어지지 않습니다.
+        </div>
+
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 수업안내 3. 학수번호/수업코드 -->
+      <section id="hy-course-code" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수업안내 · COURSE CODE</div>
+            <h2>학수번호/수업코드</h2>
+          </div>
+        </div>
+
+        <p><strong>학수번호</strong></p>
+        <p>학수번호란 각 교과목의 고유 식별 번호이며 알파벳 3자와 숫자 4자리 등 총 7자리로 구성되어 있으며, 일곱 자리의 학수번호가 일치할 경우에만 같은 과목으로 인정합니다. 학수번호는 한 번 과목으로 신설되면 절대 변경되거나 없어지지 않으며 영원히 사용하게 됩니다. 예) CUL1057 (과목명: IT경영)</p>
+
+        <p><strong>수업코드</strong></p>
+        <p>수업코드란 수강신청 및 수업진행상의 편의를 위해 한 학기에 설정되는 수업에 대해 일련번호를 매겨 놓은 것으로, 매학기 다르게 번호가 부여됩니다.</p>
+
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 수업안내 4. 특수수업 -->
+      <section id="hy-special-classes" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수업안내 · SPECIAL CLASSES</div>
+            <h2>특수수업</h2>
+          </div>
+        </div>
+
+        <p>특수강좌란 정규강좌 중 일반강좌와는 달리 특별한 형태로 운영하는 수업을 말하며, 수강편람의 「과목상세정보」에 표기되어 있습니다.</p>
+
+        <p class="hy-subsection-title"><strong>특수수업 유형 한눈에 보기</strong></p>
+        <div class="hy-table-wrap">
+          <table class="hy-special-summary">
+            <thead>
+              <tr>
+                <th scope="col">구분</th>
+                <th scope="col">운영 형태</th>
+                <th scope="col">주요 안내</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>영어전용강좌</td><td>100% 영어 수업</td><td>수업 진행 및 평가가 모두 영어로 운영됩니다.</td></tr>
+              <tr><td>SMART 강좌</td><td>온라인·오프라인 병행</td><td>주차 또는 한 주 안에서 온라인과 오프라인 수업이 병행됩니다.</td></tr>
+              <tr><td>IC-PBL 강좌</td><td>문제·프로젝트 기반 학습</td><td>대학과 산업체·지역사회가 연계된 문제 해결 중심의 교육 모델입니다.</td></tr>
+              <tr><td>제2외국어전용</td><td>한국어·영어 이외의 언어로 진행</td><td>중국어, 프랑스어, 독일어 등의 언어 강좌입니다.</td></tr>
+              <tr><td>HY-LIVE</td><td>텔레프레즌스 기반 수업</td><td>오프라인 수업과 온라인 수업을 병행하는 Sharing Education 모델입니다.</td></tr>
+              <tr><td>초청강연강좌</td><td>외부초청연사 옴니버스 수업</td><td>주별로 외부초청연사가 수업을 담당합니다.</td></tr>
+              <tr><td>e-러닝 강좌</td><td>온라인 강좌</td><td>교내 개발 강좌 및 학점교류 e-러닝 강좌가 포함됩니다.</td></tr>
+              <tr><td>대단위강좌</td><td>대규모 수강인원 강좌</td><td>학부 101명 이상, 대학원 51명 이상인 강좌입니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="hy-subsection-title"><strong>영어전용강좌</strong></p>
+        <p>학부 영어전용강좌는 100% 영어로만 운영되는 강좌입니다. 수업 진행 및 평가(과제 및 시험문제, 답안) 모두 영어로 운영됩니다.</p>
+
+        <p class="hy-subsection-title"><strong>SMART 강좌</strong></p>
+        <p>SMART 강좌는 온라인 콘텐츠와 오프라인 혹은 온라인 수업이 병행된 블렌디드 교과목으로 운영되는 강좌입니다.</p>
+        <div class="hy-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">구분</th>
+                <th scope="col">내용</th>
+                <th scope="col">비고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SMART-F</td>
+                <td>한 주차에 온라인+오프라인(혹은 온라인*) 병행 수업</td>
+                <td>예) 월요일: 온라인 / 화요일: 오프라인</td>
+              </tr>
+              <tr>
+                <td>SMART-B</td>
+                <td>주차별로 온라인, 오프라인(혹은 온라인*) 수업이 진행되는 수업</td>
+                <td>예) 1, 2주차: 오프라인 / 3, 4주차: 온라인</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="hy-subsection-title"><strong>IC-PBL 강좌</strong></p>
+        <p>IC-PBL이란 Industry-Coupled Problem/Project Based Learning의 약자로, 대학과 산업체(Industry), 지역사회(Society)가 유기적으로 연계되어 학습자가 실제 사회에서 발생하는 문제 해결 중심의 학습을 경험할 수 있도록 설계된 교육 모델입니다.</p>
+        <p>IC-PBL 수업모델은 M, E, C, A의 세부 수업유형으로 구성되며, 이 중 한 가지 유형을 선택하여 개발해야 합니다.</p>
+        <p>IC-PBL 수업 유형의 결정은 크게 1) 문제 혹은 프로젝트가 실제 기업 혹은 사회의 문제인지, 2) 결과물을 평가하는 사람이 실제 기업 혹은 사회의 관계자인지에 따라 결정할 수 있습니다.</p>
+        <div class="hy-table-wrap">
+          <table class="hy-special-types">
+            <thead>
+              <tr><th scope="col">유형</th><th scope="col">수업 방식</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>M(현장통합형)</td><td>기업 또는 지역사회로부터 실제 현장의 문제(또는 프로젝트)를 받아 이를 해결하는 수업을 진행하고, 수업 후 현장 관계자가 결과물을 평가하는 수업 유형입니다.</td></tr>
+              <tr><td>E(현장평가형)</td><td>교수자가 개발한 문제(또는 프로젝트)로 수업을 진행하고 현장 관계자가 결과물을 평가하는 수업 유형입니다.</td></tr>
+              <tr><td>C(문제해결형)</td><td>교수자가 개발한 문제(또는 프로젝트)를 중심으로 수업을 진행하고 교수자가 결과물을 평가하는 수업 유형입니다.</td></tr>
+              <tr><td>A(현장문제형)</td><td>실제 현장의 문제(또는 프로젝트)를 중심으로 수업을 진행하고 교수자가 결과물을 평가하는 수업 유형입니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="hy-subsection-title"><strong>제2외국어전용</strong></p>
+        <p>한국어나 영어 이외의 언어로 진행되는 강좌입니다(예: 중국어, 프랑스어, 독일어 등).</p>
+
+        <p class="hy-subsection-title"><strong>HY-LIVE</strong></p>
+        <p><strong>「텔레프레즌스 기반 HY-LIVE 강좌」란</strong></p>
+        <p>Telepresence(텔레프레즌스)란 Tele(원거리)와 Presence(실제)의 합성어로, 멀리 떨어져 있는 사람을 현재 공간으로 불러오는 기술을 말합니다. 5G Telepresence 기술과 실재감 있는 홀로그램 기술을 활용하여 오프라인 수업과 온라인 수업을 병행하는 강의 방식으로, 한양대학교에서 최초로 개발한 Sharing Education 교육 모델입니다.</p>
+        <p><strong>「텔레프레즌스 기반 HY-LIVE 강좌」 교과목을 통해 얻을 수 있는 내용</strong></p>
+        <p>HY-LIVE 강좌는 강의실별로 숙련된 TA(Teaching Assistant)를 배정하고, IAB(Industry Advisory Board) 현장전문가를 연결하는 등 활발한 상호작용이 일어날 수 있도록 커리큘럼을 구성합니다. 이를 통해 수강생은 AI+X Nanotrack 핵심교양과목별 주제에 보다 쉽게 접근하고 이해할 수 있습니다.</p>
+        <p><strong>「텔레프레즌스 기반 HY-LIVE 강좌」 교과목</strong></p>
+        <p>HY-LIVE 강좌는 총 4개 강좌로 구성되어 있으며, 학기별 수강신청기간에 맞춰 타 과목과 동일하게 수강신청합니다.</p>
+        <p>생활속의화학 (GEN6086) - 핵심교양(2학점)</p>
+        <p>AI+X Nanotrack - 핵심교양(3학점): AI+X : R-Python (AIX0004), AI+X : 머신러닝 (AIX0005), AI+X : 딥러닝 (AIX0003)</p>
+
+        <p class="hy-subsection-title"><strong>초청강연강좌</strong></p>
+        <p>주관교수의 사전 강의계획에 따라 외부초청연사가 주별로 각각 수업을 담당하는 옴니버스 강좌입니다.</p>
+
+        <p class="hy-subsection-title"><strong>e-러닝 강좌</strong></p>
+        <div class="hy-table-wrap">
+          <table class="hy-special-types">
+            <thead>
+              <tr><th scope="col">타입</th><th scope="col">내용</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>e-러닝 타입 A</td><td>한양대학교 자체 개발 온라인 강좌(교내 e-러닝 강좌)입니다.</td></tr>
+              <tr><td>e-러닝 타입 C</td><td>학점교류 e-러닝으로, 대학 e-러닝 기반 학점인정 컨소시엄에서 운영하는 강좌입니다.</td></tr>
+              <tr><td>e-러닝 타입 D</td><td>학점교류 e-러닝으로, 한양사이버대학교에서 운영하는 강좌입니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="hy-subsection-title"><strong>대단위강좌</strong></p>
+        <p>101명 이상(대학원은 51명 이상)이 수강하는 강좌는 대단위 강좌로 표기됩니다.</p>
+
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 6. 졸업요건 확인 관련 -->
+      <section id="hy-graduation" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · GRADUATION</div>
+            <h2>졸업요건 확인 관련</h2>
+          </div>
+        </div>
+        <div class="hy-notice hy-notice-warning">
+          <strong>졸업요건 사전 확인</strong>
+          4학년 이상 학생은 졸업에 지장이 없도록 필수과목 이수내역, 선수강 교과목, 저학년 미이수 과목 등을 수강신청 전에 반드시 확인한 후 수강신청하시기 바랍니다.
+        </div>
+
+        <details class="hy-accordion" open>
+          <summary>1) 필수과목 이수내역 확인</summary>
+          <div class="hy-detail-body">
+            <p>학기별로 적용되는 필수과목은 졸업사정조회 메뉴에서 확인할 수 있습니다.</p>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>구분</th>
+                    <th>확인 방법 및 유의사항</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>확인 메뉴</td>
+                    <td>졸업사정조회 → 미필과목이수여부</td>
+                  </tr>
+                  <tr>
+                    <td>미이수 필수과목</td>
+                    <td>지난 학년에 수강하지 못한 필수과목이 있을 경우 반드시 우선하여 수강하여야 합니다. 미이수 필수 교과목은 소속학과 교육과정에 존재하는 한 이수구분이 변경되더라도 필수 이수대상입니다.</td>
+                  </tr>
+                  <tr>
+                    <td>학적변동 유의사항</td>
+                    <td>휴학, 복학 등 학적변동 이후 학기별 적용 교육과정에 따라 필수과목이 추가될 수 있습니다. 특히 월반복학 시에는 월반하여 건너뛴 학기의 교육과정이 함께 적용되므로 복학 시 월반 학기의 필수과목이 추가될 수 있습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>2) 필수과목 이수조회 확인 시점</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>수강신청 기간 중 재확인</strong>
+              조회 시점에 따라 학기별 필수과목 일괄 적용 이전일 수 있으므로, 수강신청 기간 중 반드시 다시 확인하시기 바랍니다.
+            </div>
+            <ul>
+              <li>복학 예정 학생은 복학 처리 후 필수과목을 확인하여야 합니다.</li>
+              <li>복학처리 시점이 늦어져 필수과목 일괄 적용 이후가 되는 경우, 수강신청 기간 중 필수과목 적용내역을 확인하지 못할 수 있습니다.</li>
+              <li>복학이 늦어지는 경우 반드시 소속학과를 통하여 필수과목 이수여부를 정확하게 확인하시기 바랍니다.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>3) 선수강 교과목 이수여부 확인</summary>
+          <div class="hy-detail-body">
+            <p>학생별로 적용되는 선수강 교과목은 졸업사정조회 메뉴에서 확인할 수 있습니다.</p>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>구분</th>
+                    <th>내용</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>확인 메뉴</td>
+                    <td>졸업사정조회 → 선수강이수여부</td>
+                  </tr>
+                  <tr>
+                    <td>수강신청 유의사항</td>
+                    <td>선수강 교과목은 졸업 전까지 반드시 이수하여야 하므로, 수강신청 시 해당 교과목을 확인하고 우선하여 신청하시기 바랍니다.</td>
+                  </tr>
+                  <tr>
+                    <td>대치/동일 과목</td>
+                    <td>입학 당시 전공기초교과목이 대치 또는 동일 과목으로 지정된 경우, 반드시 대치/동일 지정된 과목으로 이수하여야 합니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>4) 저학년 및 소속학과 교과목 수강 유의사항</summary>
+          <div class="hy-detail-body">
+            <ul>
+              <li>저학년 과목에 여석이 없는 경우 전 학년 수강신청 기간 및 개강 후 정정기간을 이용하시기 바랍니다.</li>
+              <li>아카데믹글쓰기, 학술영어, AI 리터러시, 파이썬과인공지능 등 교양필수 및 전공기초 교과목 중 소속학과(대학)에 설강된 교과목은 소속학과 개설 강좌를 우선적으로 수강하시기 바랍니다.</li>
+              <li>개강 후에도 타 학과에 개설된 과목은 수강신청이 제한될 수 있습니다.</li>
+              <li>수강인원 제한으로 수강신청이 되지 않는 경우 설강학과로 문의하시기 바랍니다.</li>
+            </ul>
+          </div>
+        </details>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 7. 강좌별 세부 정보 확인 방법 -->
+      <section id="hy-course-info" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · COURSE INFORMATION</div>
+            <h2>강좌별 세부 정보 확인 방법</h2>
+            <p class="hy-section-desc">각 항목의 + 버튼을 눌러 확인 방법을 펼쳐볼 수 있습니다.</p>
+          </div>
+        </div>
+        <details id="hy-syllabus" class="hy-accordion">
+          <summary>1) 수업계획서 및 교과목개요서 확인</summary>
+          <div class="hy-detail-body">
+            <p>수강신청 화면에서 교과목 조회 후 수업번호를 클릭하면 수업계획서를 조회할 수 있으며, 학수번호 혹은 교과목명을 클릭하면 교과목개요서를 확인할 수 있습니다.</p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center">
+                <thead>
+                  <tr><th>확인 항목</th><th>클릭 위치</th><th>확인 내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>수업계획서</td><td>수업번호</td><td>수업 운영 방식, 평가, 교재, 주차별 계획 등</td></tr>
+                  <tr><td>교과목개요서</td><td>학수번호 또는 교과목명</td><td>교과목 개요 및 기본 정보</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details id="hy-seat-allocation" class="hy-accordion">
+          <summary>2) 전공 및 교양 교과목 배정인원 확인</summary>
+          <div class="hy-detail-body">
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>구분</th><th>확인 방법</th><th>수강신청 기간 표시 기준</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>전공 강좌</td>
+                    <td>수강신청화면에서 교과목 조회 후 '수강/정원' 칸에 강좌별 수강인원 및 총정원이 표기됩니다. 해당 숫자를 클릭하면 학년별/다전공 세부 배정인원을 확인할 수 있습니다.</td>
+                    <td>본인 해당 수강신청기간에는 '수강/정원' 칸의 숫자가 본인에게 해당되는 세부 배정인원으로 표시됩니다.</td>
+                  </tr>
+                  <tr>
+                    <td>교양 강좌</td>
+                    <td>수강신청화면에서 교과목 조회 후 '수강/정원' 숫자를 클릭하면 학년별 세부 배정인원이 조회됩니다.</td>
+                    <td>본인 해당 수강신청 기간에는 '수강/정원' 숫자가 본인에게 해당되는 배정인원으로 표시됩니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details id="hy-multiple-major" class="hy-accordion">
+          <summary>3) 다전공 배정인원 관련</summary>
+          <div class="hy-detail-body">
+            <p>학과에 개설된 전체 강좌에 대하여 정원의 최소 5%에 해당되는 인원이 다전공 인원으로 배정됩니다.<br>(학년별 수강신청 시 주전공+다중전공으로 이미 다중전공 수요를 소화한 과목 등 예외가 있을 수 있음)</p>
+            <div class="hy-notice">
+              <strong>다전공 배정 비율 예외 학과</strong>
+              문화콘텐츠학과, 커뮤니케이션디자인학과, 산업경영공학과, 소프트웨어학부 컴퓨터전공, 광고홍보학과는 정원의 10% ~ 20%가 다전공 인원으로 배정됩니다.
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>배정 제외 및 금학기 유의사항</strong>
+              공통기초필수 및 1학년 전공기초필수 교과목 등은 다전공인원 배정대상에서 제외됩니다. 금학기 경상대학 교과목은 5%에 해당하는 인원이 다전공으로 배정됩니다(분반 증설 및 이수제한 해제교과 확대).
+            </div>
+          </div>
+        </details>
+        <details id="hy-course-restriction" class="hy-accordion">
+          <summary>4) 강좌별 이수제한 확인</summary>
+          <div class="hy-detail-body">
+            <p>이수제한이 설정된 교과목의 경우 '이수제한여부'에 '○'가 표시되며, 해당 '○' 표시를 클릭하면 이수제한 상세내역을 확인할 수 있습니다.</p>
+            <div class="hy-notice hy-notice-warning">
+              <strong>다전공수강신청기간 유의사항</strong>
+              전공강좌별 이수제한 설정내역은 '다전공수강신청기간'에는 적용되지 않습니다.
+            </div>
+          </div>
+        </details>
+        <details id="hy-code-share" class="hy-accordion">
+          <summary>5) 학과간공통교과목(Code Share) 확인</summary>
+          <div class="hy-detail-body">
+            <p>A학과의 교육과정에는 등재되지 않은 과목이지만, A학과와 B학과의 협의에 의해 지정된 공통 교과목(Code Share)을 A학과 학생이 B학과에서 수강하게 되면 전공학점으로 인정하는 제도입니다.</p>
+            <div class="hy-notice">
+              <strong>조회 방법</strong>
+              학생들이 수강신청시스템에 접속하여 본인의 기본수업 정보를 조회하면 하단에 본인의 소속학과에서 교류 지정한 과목을 확인할 수 있습니다.
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>주전공 인정 유의사항</strong>
+              학과간공통교과목(Code Share) 과목은 주전공 학생에게만 전공으로 인정됩니다. 다중전공, 부전공 학생은 전공으로 인정되지 않습니다.
+            </div>
+            <p><strong>학과간공통교과목(Code Share) 관련 FAQ</strong></p>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>질문</th><th>답변</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>학과간공통교과목(Code Share) 지정 이전 그 과목을 수강한 학생도 전공으로 인정받을 수 있습니까?</td>
+                    <td>학과간공통교과목(Code Share)을 지정한 시기부터 전공으로 인정됩니다. 즉, 과거에 들었던 교과목은 전공으로 소급 인정받을 수 없습니다.</td>
+                  </tr>
+                  <tr>
+                    <td>학과간공통교과목(Code Share)은 같은 단과대학 내에서만 신청이 가능합니까?</td>
+                    <td>학과간공통교과목(Code Share)은 타 단과대학 간에도 신청이 가능합니다.</td>
+                  </tr>
+                  <tr>
+                    <td>학과간공통교과목(Code Share)은 다중전공, 부전공 학생도 적용이 됩니까?</td>
+                    <td>학과간공통교과목(Code Share) 과목은 주전공 학생에게만 전공으로 인정됩니다. 다중전공, 부전공 학생은 전공으로 인정되지 않습니다.</td>
+                  </tr>
+                  <tr>
+                    <td>학과간공통교과목(Code Share) 과목은 수강신청 전에 학생들에게 별도로 안내가 됩니까?</td>
+                    <td>학생들이 수강신청시스템에 접속하여 본인의 기본수업 정보를 조회하면 하단에 본인의 소속학과에서 교류 지정한 과목을 확인할 수 있습니다.</td>
+                  </tr>
+                  <tr>
+                    <td>학과간공통교과목(Code Share)은 대학원 교과목과도 지정이 가능합니까?</td>
+                    <td>학과간공통교과목(Code Share)은 학부 간에만 지정이 가능합니다. 대학원에서 개설되는 수업을 학부생이 수강 후 전공과목으로 인정받기 위해서는 ‘학부-대학원 공통교육과정’ 제도를 이용하시면 됩니다. ‘학부-대학원 공통교육과정’ 제도는 학부에서 개설되는 수업을 대학원생이 수강하여 대학원 전공과목으로 인정받을 수도 있습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 8. 재수강 안내 -->
+      <section id="hy-retake" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · RETAKE</div>
+            <h2>재수강 안내</h2>
+          </div>
+        </div>
+        <div class="hy-notice hy-notice-warning">
+          <strong>재수강 가능 성적 및 성적 상한</strong>
+          이미 취득한 교과목에 대한 재수강 신청은 성적이 C+ 이하인 경우에 한하여 가능하며, 재수강 시 최고 취득학점은 A0로 제한됩니다. F학점 재수강도 동일하게 적용됩니다.
+        </div>
+
+        <details class="hy-accordion" open>
+          <summary>1) 성적상승 재수강</summary>
+          <div class="hy-detail-body">
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>구분</th><th>내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>신청 범위</td><td>수강신청 최소·최대 학점 범위 내에서 신청 가능하며, 재수강 신청학점 수를 별도로 제한하지 않습니다.</td></tr>
+                  <tr><td>대상 교과목</td><td>두 교과목의 학수번호가 동일한 경우 또는 동일과목으로 지정된 과목에 한하여 재수강이 허용됩니다.</td></tr>
+                  <tr><td>신청 확인</td><td>성적상승재수강을 신청한 경우 신청란에 “성적상승”으로 표기되므로 반드시 해당 여부를 확인해야 합니다.</td></tr>
+                  <tr><td>동일과목 유의사항</td><td>동일과목은 성적상승으로만 수강할 수 있으며, 일반과목 수강신청으로 다시 수강하는 것은 불가능합니다.</td></tr>
+                  <tr><td>재수강 횟수</td><td>2019학년도 1학기부터 과목당 재수강 횟수는 2회로 제한됩니다. 2018학년도 2학기까지의 재수강 횟수와는 무관하며, 2019학년도 1학기부터의 재수강 횟수부터 산정됩니다.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-notice">
+              <strong>성적 처리 기준</strong>
+              성적상승재수강 전·후 성적 중 상위 성적만 인정되며 하위 성적은 폐기 처리됩니다. 과목의 학점수가 변경된 경우에는 상위 성적의 학점수로 처리되나, 이수구분은 성적상승재수강 전의 이수구분으로 처리됩니다.
+            </div>
+            <ul>
+              <li>예: 성적상승재수강 전 “전공핵심, C, 3학점”이고 재수강 후 “전공심화, A0, 2학점”인 경우 최종 처리 내역은 “전공핵심, A0, 2학점”입니다.</li>
+              <li>다만 이수구분이 일반선택인 과목의 재수강은 성적상승이 된 학기의 이수구분으로 처리됩니다.</li>
+              <li>이전에 IC-PBL, 영어전용강좌 등이었으나 일반과목으로 변경된 과목을 성적상승재수강한 경우, IC-PBL 또는 영어전용강좌 이수로 인정되지 않습니다.</li>
+              <li>성적증명서는 성적상승재수강 전·후 성적 중 상위 성적으로 발급됩니다.</li>
+            </ul>
+            <div class="hy-notice hy-notice-danger">
+              <strong>F성적 재수강 유의사항</strong>
+              기 취득한 과목을 성적상승재수강하여 F를 받을 경우 금학기 장학 평점에는 계산되지만 누적학점과 누적평점에는 가산되지 않습니다. 단, 처음 취득한 F(50점) 과목을 성적상승재수강하여 F(55점)를 받은 경우에는 더 높은 F성적이 남으며, 2014학년도부터 F가 표기되므로 평점에도 계산됩니다.
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>학사학위취득유예자 유의사항</strong>
+              수강신청을 하는 학사학위취득유예자는 성적상승재수강이 불가하며, 수강신청 이후 수강신청 포기도 불가합니다. 수강신청 단계에서 재수강 신청이 불가하도록 시스템이 운영됩니다.
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>2) 미취득 과목(F학점 과목)의 재수강</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>필수과목 미취득 시</strong>
+              미취득한 F학점 필수과목이 발생한 경우에는 반드시 다음 학년에 해당 학년 과목보다 우선하여 수강하여야 합니다.
+            </div>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>구분</th><th>재수강 기준</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>자과 교육과정에서 교양필수 또는 전공기초였던 과목</td>
+                    <td>현행 교육과정 기준으로 존속하는 과목은 과목구분이 변경되었더라도 반드시 이수하여야 합니다. 현행 교육과정 기준으로 폐강된 과목은 수강하지 않아도 되며, 자세한 사항은 소속학과에서 확인하시기 바랍니다.</td>
+                  </tr>
+                  <tr>
+                    <td>필수과목이 아닌 기타 미취득 교과목</td>
+                    <td>교양 또는 전공 선택과목이었던 과목은 본인의 의사에 따라 수강 여부를 선택할 수 있으며, 수강신청에서 재수강 과목 수와 학점 수를 제한하지 않습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-notice">
+              <strong>폐강 교과목 기준</strong>
+              폐강 교과목이란 자과의 교육과정에서 없어진 과목을 뜻합니다. 자과에서 없어진 과목이 타과 교육과정이나 교양과정에 개설되더라도 폐강 교과목에 해당됩니다.
+            </div>
+            <p><strong>성적 처리 및 증명서 표기</strong></p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center">
+                <thead>
+                  <tr><th>이수 시기</th><th>성적증명서 표기</th><th>평점평균 반영</th><th>재수강 성공 시</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>2013학년도 2학기까지</td><td>NA</td><td>미포함</td><td>이전 과목의 NA 표기 성적 삭제</td></tr>
+                  <tr><td>2014학년도 1학기부터</td><td>F</td><td>포함</td><td>이전 과목의 F 표기 성적 삭제</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 9. 성적평가방법 안내 -->
+      <section id="hy-grading" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · GRADING</div>
+            <h2>성적평가방법 안내</h2>
+          </div>
+        </div>
+        <div class="hy-notice hy-notice-warning">
+          <strong>성적평가 인원 산정 기준</strong>
+          평가방법의 인원 기준은 수강포기 후 최종적으로 학점이 부여되는 인원을 기준으로 산정됩니다. 성적평가방법에 변경이 있을 경우 추후 공지로 상세하게 안내될 예정입니다.
+        </div>
+
+        <details class="hy-accordion" open>
+          <summary>1) 성적평가 적용 기준</summary>
+          <div class="hy-detail-body">
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>유형</th>
+                    <th>A 비율</th>
+                    <th>A+B 비율</th>
+                    <th>성적평가 세부 적용 내용</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>상대평가1</td><td>30%</td><td>70%</td><td>이론 교과목 중 수강인원 12명 이상 강좌</td></tr>
+                  <tr><td>상대평가2</td><td>40%</td><td>80%</td><td>이론/실습 교과목 중 수강인원 20명 이상 강좌</td></tr>
+                  <tr><td>상대평가3</td><td>50%</td><td>90%</td><td>IC-PBL교과목, 초청강연강좌 중 창의융합교육원 별도 요청 강좌</td></tr>
+                  <tr><td>상대평가4</td><td>40%</td><td>-</td><td>교육혁신처장 별도 승인 강좌</td></tr>
+                  <tr>
+                    <td>절대평가</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>
+                      <ul>
+                        <li>이론 교과목 중 수강인원 12명 미만 강좌</li>
+                        <li>이론/실습 교과목 중 수강인원 20명 미만 강좌</li>
+                        <li>실험/실습 교과목</li>
+                        <li>영어전용강좌</li>
+                        <li>창의적영어읽기1, 2 고급</li>
+                        <li>제2외국어강좌</li>
+                        <li>학연산클러스터센터, 창업교육센터 관장 교과목</li>
+                        <li>교직, ROTC교과목, 현장실습 교과목</li>
+                        <li>교환학생 및 학점교류 학생 인정 강좌, 현지학기제 강좌</li>
+                        <li>E러닝 강좌 중 E-러닝 타입 B, C, D</li>
+                        <li>캡스톤디자인(공학대학, 소프트웨어융합대학, 약학대학, 경상대학, 디자인대학)</li>
+                        <li>HY-LIVE강좌</li>
+                        <li>교육혁신처장 별도 승인 강좌</li>
+                        <li>IC-PBL(M) 교과목</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>P/F</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>
+                      <ul>
+                        <li>초청강연강좌</li>
+                        <li>E러닝 강좌 중 교내 E-러닝 A, E-러닝 타입 M</li>
+                        <li>캡스톤디자인(첨단융합대학, 글로벌문화통상대학, 커뮤니케이션&amp;컬처대학, 예체능대학)</li>
+                        <li>연구실심화실습 교과목</li>
+                        <li>교육혁신처장 별도 승인 강좌</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>2) S/U평가 제도</summary>
+          <div class="hy-detail-body">
+            <p>S/U평가는 타전공 교과목 이수 활성화를 목적으로 하며, 타전공 교과목을 수강하는 학생이 성적평가 방법을 원 평가방식 또는 S/U평가로 선택할 수 있도록 하는 제도입니다.</p>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>구분</th><th>내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>시행 시기</td><td>현행 기준에 따라 시행 중</td></tr>
+                  <tr><td>신청기간</td><td>중간시험 이후부터 기말시험 전(성적처리 전)까지이며, 세부 일정은 학사운영팀에서 별도 안내 예정입니다. 신청기간 이후에는 어떤 사유로도 변경 또는 취소할 수 없습니다.</td></tr>
+                  <tr><td>신청방법</td><td>HY-in 포털 로그인 → 신청 → 성적 → S/U등급 평가 신청에서 학생이 직접 온라인으로 신청하여야 합니다.</td></tr>
+                  <tr><td>신청 가능 범위</td><td>학기당 1과목 신청 가능하며, 재학 중 최대 9학점까지 신청 가능합니다.</td></tr>
+                  <tr><td>신청 가능한 교과목</td><td>해당 학기 등급제 평가 방식 교과목 중 타전공 일반선택으로 신청된 교과목에 한합니다. 단, 교육혁신처장이 지정 또는 제외할 수 있습니다.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><strong>S/U평가 성적처리 기준</strong></p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center">
+                <thead>
+                  <tr><th>등급</th><th>점수</th><th>졸업학점 반영</th><th>평균평점 반영</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>S(Satisfied)</td><td>70 ~ 100</td><td>반영</td><td>미반영</td></tr>
+                  <tr><td>U(Unsatisfied)</td><td>0 ~ 69</td><td>미반영</td><td>미반영</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <ul>
+              <li>S/U평가를 선택한 과목은 원 평가방법으로 성적 입력 후 S/U 기준에 따라 처리됩니다.</li>
+              <li>S등급을 취득한 교과목은 재수강할 수 없으며, U등급을 받은 경우 성적재수강 성적처리 규정에 따라 성적을 부여합니다.</li>
+              <li>U등급은 미이수이므로 졸업학점 이수에 해당하지 않습니다.</li>
+            </ul>
+            <div class="hy-notice">
+              <strong>문의처</strong>
+              S/U평가 관련 문의사항은 031-400-4217로 문의하시기 바랍니다.
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>3) 학점포기제도</summary>
+          <div class="hy-detail-body">
+            <p>학점포기제는 기취득한 성적을 본인의 의사에 따라 포기하는 제도입니다.</p>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>구분</th><th>내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>시행 시기</td><td>현행 기준에 따라 시행 중</td></tr>
+                  <tr><td>신청기간</td><td>학기 중 지정기간에 신청합니다. 세부 일정은 학사운영팀 안내, 포털 공지사항 및 학사안내 홈페이지를 참고하시기 바랍니다.</td></tr>
+                  <tr><td>신청자격</td><td>학위과정을 이수 중인 주전공 수업연한의 잔여학기가 2개 학기 이내인 재학생(학업연장 재수강자 포함)</td></tr>
+                  <tr><td>신청방법</td><td>HY-in 포털 → 신청 → 성적 → 학점포기신청에서 학생이 직접 온라인으로 신청하여야 합니다.</td></tr>
+                  <tr><td>대상 범위</td><td>재학 중 9학점 이내로 신청 가능합니다.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>신청 및 취소 유의사항</strong>
+              신청기간 외의 신청·취소는 불가능하며, 신청 이후 어떠한 사유로도 변경 또는 취소할 수 없습니다. 학사학위취득유예생은 수강신청 유무와 관계없이 졸업사정이 완료된 상태이므로 신청할 수 없습니다.
+            </div>
+            <p><strong>대상 과목</strong></p>
+            <ul>
+              <li>주전공 기준 전공핵심, 전공심화 교과목과 타전공(일반)선택 교과목</li>
+              <li>주전공 기준 교육과정의 개편·변경으로 인해 폐지되어 재수강이 불가능한 전공기초교과목</li>
+              <li>교육과정의 개편·변경으로 인해 교육과정에서 폐지되거나 직전학기를 포함하여 개설학기에 미개설되어 재수강이 불가능한 교양 교과목</li>
+            </ul>
+            <p><strong>포기 제외 과목</strong></p>
+            <ul>
+              <li>학과교육과정에 등재되어 운영 중인 주전공의 필수이수 과목</li>
+              <li>공통교육과정에 등재되어 직전학기를 포함하여 개설학기에 정상 운영된 교양과목</li>
+              <li>P/F평가로 성적처리 된 과목</li>
+              <li>등급으로 성적처리되는 과목 중 평균평점 제외 과목</li>
+              <li>교직과목 및 ROTC 과목</li>
+              <li>S/U평가로 성적처리 된 과목</li>
+              <li>교환학생, 학점교류제, 현지학기제, 현장실습, 창업대체 등을 통해 외부 기관에서 취득한 인정학점</li>
+              <li>편입생의 전적대학 인정학점, 복수학위제 학생의 원소속 대학 인정학점, 기타 외부에서 취득한 인정학점</li>
+              <li>I등급 학점</li>
+            </ul>
+            <div class="hy-notice hy-notice-danger">
+              <strong>학점포기 유의사항</strong>
+              포기한 성적은 어떠한 경우에도 재인정하지 않으며, 포기한 과목은 재수강할 수 없습니다. 포기 학점은 졸업 이수 학점에 영향을 줄 수 있으므로 신청 전 반드시 확인하시기 바랍니다.
+            </div>
+            <ul>
+              <li>직전 학기 이수 학점에 대한 성적을 포기할 경우 국가장학금 및 교내·교외 장학금 수혜 내역에 변동사항이 생길 수 있습니다.</li>
+              <li>학점포기 가능과목은 매학기 교과운영에 따라 변경될 수 있습니다.</li>
+              <li>학점포기 신청을 제출하였더라도 일부 교과목은 교육과정상 포기가능 교과목 오류, 장학 영향 등의 사유로 개별통보 후 취소될 수 있습니다.</li>
+              <li>스마트융합공학부(조기취업형 계약학과)는 학점 이수 현황에 따라 재매칭 대상자로 변동될 수 있으므로 유의하여 신청하시기 바랍니다. 관련 문의는 031-400-4853~4856입니다.</li>
+              <li>전공에 따라 학점포기 시 공학교육인증(ABEEK)과 같은 졸업 관련 별도 인증제, 영어전용강좌 등 졸업조건 해당 분야에서 학점 또는 강좌수가 줄어들 수 있으므로 신청 전 반드시 확인하시기 바랍니다.</li>
+            </ul>
+          </div>
+        </details>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 10. 교과목 폐강 기준 안내 -->
+      <section id="hy-course-closure" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · COURSE CLOSURE</div>
+            <h2>교과목 폐강 기준 안내</h2>
+          </div>
+        </div>
+        <div class="hy-notice hy-notice-warning">
+          <strong>폐강 기준 적용 유의사항</strong>
+          아래 기준에 해당하더라도 사전에 협의된 폐강 미진행 강좌는 폐강 대상에서 제외될 수 있습니다.
+        </div>
+        <div class="hy-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>폐강 기준</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>교양선택 및 영어전용강좌</td>
+                <td>수강인원 15명 미만 시 폐강</td>
+              </tr>
+              <tr>
+                <td>교양필수 교과목</td>
+                <td>수강인원 10명 미만 시 폐강</td>
+              </tr>
+              <tr>
+                <td rowspan="2">전공교과목</td>
+                <td>학년별 재학인원 25명 이상: 수강인원 10명 미만 시 폐강</td>
+              </tr>
+              <tr>
+                <td>학년별 재학인원 25명 미만: 수강인원이 재학인원의 40%(소수점 버림) 미만 시 폐강. 단, 수강인원 6명 미만인 경우 폐강</td>
+              </tr>
+              <tr>
+                <td>캡스톤디자인, IC-PBL과비전설계</td>
+                <td>과목 수강인원 4명 미만 시 폐강</td>
+              </tr>
+              <tr>
+                <td>교직, 군사학, 연구실심화실습 교과목</td>
+                <td>수강인원 0명일 경우만 폐강</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="hy-notice">
+          <strong>세부 적용 안내</strong>
+          <div>1) 전공교과목은 학년별 재학인원을 기준으로 폐강 기준을 적용합니다.</div>
+          <div>2) 캡스톤디자인, IC-PBL과비전설계는 지도교수별 개설 시 지도교수별 기준을 적용하고, 지도교수별 미개설 시 일반과목 기준을 적용합니다. (단, 융합전공학과의 캡스톤디자인은 일괄적으로 수강인원 4명 미만 기준을 적용합니다.)</div>
+        </div>
+        <div class="hy-notice hy-notice-warning">
+          <strong>폐강 확정 후 수강정정 안내</strong>
+          폐강 확정 후 해당강좌의 수강생들은 교과목 폐강에 따른 정정기간 동안 소속 단과대학 행정팀에서 폐강에 따른 수강정정을 실시하며, 잔여석이 있는 학과 과목에 한하여 가능합니다.
+        </div>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 12. 기타 제도별 유의사항 -->
+      <section id="hy-other-policies" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · OTHER POLICIES</div>
+            <h2>기타 제도별 유의사항</h2>
+            <p class="hy-section-desc">해당되는 제도를 선택해 세부 내용을 확인할 수 있습니다.</p>
+          </div>
+        </div>
+        <details id="hy-online-course" class="hy-accordion">
+          <summary>1) 온라인 강좌 수강 안내</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>온라인 강좌 신청 학점 제한</strong>
+              온라인 강좌 중 특수수업 E-러닝타입 A, B, C, D, M유형의 과목은 최대 3학점까지 수강신청이 가능하며, 사이버토익을 포함할 경우 최대 5학점까지 가능합니다.
+            </div>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>구분</th><th>수업계획서 조회 및 수강 방법</th><th>유의사항</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>한양사이버대 강좌</td>
+                    <td>한양사이버대학교 홈페이지(<a href="http://www.hycu.ac.kr/" target="_blank" rel="noopener">http://www.hycu.ac.kr/</a>)에서 수업계획서 조회 및 수강</td>
+                    <td>수강신청 시 반드시 개강 전 한양사이버대 홈페이지에서 공지사항을 확인하시기 바랍니다.</td>
+                  </tr>
+                  <tr>
+                    <td>서울권역이러닝강좌</td>
+                    <td>교내 홈페이지를 통해 수강</td>
+                    <td>수업계획서 및 시범강의는 서울권역e러닝센터 홈페이지(<a href="http://selc.or.kr" target="_blank" rel="noopener">http://selc.or.kr</a>)에서 확인 가능합니다.</td>
+                  </tr>
+                  <tr>
+                    <td>사이버토익</td>
+                    <td>수업계획서의 수강 홈페이지 참고</td>
+                    <td>온라인 강좌 신청 가능 학점 산정 시 사이버토익 포함 여부를 확인하시기 바랍니다.</td>
+                  </tr>
+                  <tr>
+                    <td>K-MOOC강좌(E-러닝M)</td>
+                    <td>K-MOOC 사이트 홈페이지에서 수업계획서를 조회하고 수강</td>
+                    <td>학점교류 강좌이므로 수강신청 시 반드시 사이버강좌(가상대학영역) 수강 안내를 확인하시기 바랍니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-actions">
+              <a class="hy-btn hy-btn-primary" href="https://ehaksa.hanyang.ac.kr/cyber-guide?p_p_id=56_INSTANCE_X5iu63FXHAzb&amp;p_p_lifecycle=0&amp;p_p_state=normal&amp;p_p_mode=view&amp;p_p_col_id=column-1&amp;p_p_col_count=1" target="_blank" rel="noopener">사이버강좌 수강안내 바로가기 ↗</a>
+            </div>
+          </div>
+        </details>
+        <details id="hy-pf-course" class="hy-accordion">
+          <summary>2) P/F 강좌 수강 안내</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>P/F 강좌 신청 제한</strong>
+              학기당 수강 가능한 P/F 과목은 최대 2개 강좌입니다.
+            </div>
+            <p>단, 사회봉사 및 P/F로 운영되는 교양필수 교과목은 최대 2회에 포함되지 않고 예외 처리됩니다.</p>
+          </div>
+        </details>
+        <details id="hy-undergrad-grad" class="hy-accordion">
+          <summary>3) 학부-대학원 공통 교육과정 교과목 수강 안내</summary>
+          <div class="hy-detail-body">
+            <p>2015학년도부터 학부 4학년생은 대학원 교과목을 수강할 수 있습니다. 대학원 교과목은 개인별 수강신청 가능학점 범위 내에서 최대 6학점까지 신청할 수 있습니다.</p>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>구분</th><th>내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>신청 대상</td>
+                    <td>학부 4학년생</td>
+                  </tr>
+                  <tr>
+                    <td>신청 가능 학점</td>
+                    <td>개인별 수강신청 가능학점 범위 내 최대 6학점</td>
+                  </tr>
+                  <tr>
+                    <td>학점 인정</td>
+                    <td>전공학점으로 인정되며 졸업이수학점에 포함됩니다.</td>
+                  </tr>
+                  <tr>
+                    <td>수강신청 방법</td>
+                    <td>수강신청시스템의 "학석사공통수강신청" 메뉴에서 별도로 지정된 일자에 온라인으로 신청할 수 있습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>대학원 수료학점 인정 유의사항</strong>
+              공통교육과정으로 이수한 대학원 교과목의 학점은 추후 대학원 수료학점으로 인정되지 않습니다.
+            </div>
+          </div>
+        </details>
+        <details id="hy-english-only" class="hy-accordion">
+          <summary>4) 영어전용강좌 의무 이수 안내</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>영어전용강좌 이수조건</strong>
+              영어전용강좌는 2과목 이상 이수하여야 합니다.
+            </div>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>구분</th><th>내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>이수조건</td>
+                    <td>2과목 이상</td>
+                  </tr>
+                  <tr>
+                    <td>이수조건 산정 제외 과목</td>
+                    <td>학술영어, 학술영어1:통합, 학술영어2:글쓰기, 영어커뮤니케이션1-초급/중급/고급, 영어커뮤니케이션2-초급/중급/고급은 영어전용강좌 의무 이수 과목 수에 포함되지 않습니다.</td>
+                  </tr>
+                  <tr>
+                    <td>의무이수 제외 대상</td>
+                    <td>공학대학 융합시스템공학과, 스마트융합공학부, 약학대학, 경상대학 회계세무학과, 예체능대학 전체 학생</td>
+                  </tr>
+                  <tr>
+                    <td>수강신청 시 확인 방법</td>
+                    <td>영어전용강좌는 수강신청 시 특수수업구분에 ‘영어전용’으로 기재되어 있습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details id="hy-required-english" class="hy-accordion">
+          <summary>5) 영어 교양필수 강좌 안내</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>학술영어 교과목 운영 기준</strong>
+              현행 교육과정 기준에 따라 학술영어 교과목 운영 방식이 적용됩니다.
+            </div>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>구분</th><th>내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="2">기존 교과목 운영</td>
+                    <td>“학술영어1:통합”, “학술영어2:글쓰기” 교과목은 2025년도 2학년 학생까지 기존 20-24 교육과정이 유지될 예정입니다.</td>
+                  </tr>
+                  <tr>
+                    <td>재수강반 운영: 학술영어 교과목의 재수강반 운영 여부와 종료 시기는 해당 교육과정 기준을 확인하시기 바랍니다.</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2">신규 교과목 적용</td>
+                    <td>2025학번 신입생이 2학년이 되는 해당 연도부터 “학술영어” 교과목이 교양필수 강좌로 적용될 예정입니다.</td>
+                  </tr>
+                  <tr>
+                    <td>수강신청 계열: 학술영어는 1학기에는 이공자연, 2학기에는 인문사회예체로 나누어 운영하고 있습니다. 다만 본인 계열이 개설되는 학기가 아닌 경우에도 “개강 후 정정기간”에는 학과제한이 풀리니 이 때 빈 자리가 있는 수업에 한해 수강신청 할 수 있습니다.</td>
+                  </tr>
+                  <tr>
+                    <td>증원 관련</td>
+                    <td>원칙적으로 증원하지 않습니다. 전체 인원보다 더 많은 학생이 수강할 수 있도록 설계되었습니다. 개강 후 정정기간에 학과 이수제한이 풀리니 이때 시도해보시길 바랍니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-notice">
+              <strong>문의처</strong>
+              학술영어 관련 문의사항은 영어교육위원회(031-400-5901)로 문의하시기 바랍니다.
+            </div>
+          </div>
+        </details>
+        <details id="hy-icpbl" class="hy-accordion">
+          <summary>6) IC-PBL강좌 의무 이수 안내</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>의무 이수 대상</strong>
+              대상은 2017학년도 이후 신편입학생입니다. 아래 기준에 따라 IC-PBL강좌 의무 이수 여부를 확인하시기 바랍니다.
+            </div>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>대상</th><th>의무 이수 기준</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>2017학년도 신입학생 ~</td>
+                    <td>IC-PBL강좌 4강좌 이상 이수, 4강좌 중 전공 교과목 1강좌 이상 이수</td>
+                  </tr>
+                  <tr>
+                    <td>2019학년도 편입학생</td>
+                    <td>IC-PBL강좌 2강좌 이수</td>
+                  </tr>
+                  <tr>
+                    <td>2020학년도 편입학생 ~</td>
+                    <td>IC-PBL강좌 2강좌 이수, 2강좌 중 전공(전공기초 포함) 교과목 1강좌 이상 이수</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-notice">
+              <strong>의무이수 제외 대상</strong>
+              공학대학 융합시스템공학과, 스마트융합공학부, 첨단융합대학 국방지능정보융합공학부 국방전략기술공학과, 약학대학 약학과, 경상대학 회계세무학과, LIONS칼리지 학생설계전공학부에서 주전공을 이수하는 학생은 의무이수 대상에서 제외됩니다.
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>IC-PBL강좌 인정 유의사항</strong>
+              <ul>
+                <li>타전공 교과목, IC-PBL+ 교과목 이수도 인정됩니다.</li>
+                <li>IC-PBL강좌는 교양 “IC-PBL과비전설계”, “IC-PBL과취창업을위한진로탐색”, “IC-PBL과역량계발” 외 전공 교과목이 개설 및 운영되고 있습니다.</li>
+                <li>위 3개 교양교과 외 개설되는 교양교과를 이수할 경우 IC-PBL강좌 이수로 인정되지 않습니다.</li>
+                <li>교양 “IC-PBL과비전설계”는 1학년 신입생 대상 교과목으로, 교과 내용 및 특성상 편입생은 수강할 수 없습니다.</li>
+              </ul>
+            </div>
+            <div class="hy-notice">
+              <strong>문의처</strong>
+              IC-PBL센터 031-400-4892
+            </div>
+          </div>
+        </details>
+        <details id="hy-liberal-arts" class="hy-accordion">
+          <summary>7) 교양선택 의무 이수 학점 안내</summary>
+          <div class="hy-detail-body">
+            <p>대학별로 지정된 교양선택 총학점을 이수하여야 합니다.</p>
+            <p class="hy-text-center"><strong>단과대학별 지정 이수 학점 현황 (교양선택 및 ERICA 공통)</strong></p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center hy-table-blue-head">
+                <thead>
+                  <tr>
+                    <th rowspan="2">대학 및 학과</th>
+                    <th colspan="5">교양선택</th>
+                    <th rowspan="2">계</th>
+                  </tr>
+                  <tr>
+                    <th>자기인식</th>
+                    <th>글로벌 소통과<br>문화</th>
+                    <th>미래 기술</th>
+                    <th>기업가 정신</th>
+                    <th>창의적 사고</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>공학대학</td>
+                    <td colspan="5" rowspan="2">영역 제한 없음</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>공학대학<br>융합시스템공학과</td>
+                    <td>6</td>
+                  </tr>
+                  <tr>
+                    <td>공학대학<br>스마트융합공학부</td>
+                    <td colspan="5">-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>소프트웨어융합대학</td>
+                    <td colspan="5">영역 제한 없음</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>약학대학<br>(2+4학제)</td>
+                    <td colspan="5">-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>약학대학<br>(통합 6년제)</td>
+                    <td colspan="5" rowspan="9">영역 제한 없음</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>첨단융합대학</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>글로벌문화통상대학</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>커뮤니케이션&amp;<br>컬처대학</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>경상대학</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>경상대학<br>회계세무학과</td>
+                    <td>6</td>
+                  </tr>
+                  <tr>
+                    <td>디자인대학</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>예체능대학</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>LIONS칼리지</td>
+                    <td>10</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>교육과정별 적용 기준</strong>
+              <ul>
+                <li>2025-2028 교육과정은 교양선택 영역 제한 없이 대학/학과별 총 학점에 따라 이수합니다.</li>
+                <li>2016-2019, 2020-2023 교육과정 대상자도 2025-1학기부터 위 내용을 적용합니다. 세부배당학점은 졸업사정 내역의 교양 배당학점을 참고하시기 바랍니다.</li>
+                <li>2016-2019 교육과정은 대학/학과별 핵심교양 4~6학점, 2020-2023 교육과정은 대학/학과별 교양선택 6~10학점을 기준으로 합니다.</li>
+              </ul>
+            </div>
+            <div class="hy-notice">
+              <strong>이수 방식 변경 안내</strong>
+              기존 영역별 이수에서 통합 운영 및 총학점 이수로 변경되었으니 참고하시기 바랍니다.
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>사회봉사 학점 유의사항</strong>
+              사회봉사는 교양선택 총학점 이수 기준에서 제외됩니다. 사회봉사를 제외한 교양선택 교과목으로 이수 조건을 충족하여야 합니다.
+            </div>
+          </div>
+        </details>
+        <details id="hy-service-industry" class="hy-accordion">
+          <summary>8) 사회봉사 및 산학협력영역 의무 이수 안내</summary>
+          <div class="hy-detail-body">
+            <p>사회봉사 1학점 의무 이수 및 산학협력영역 의무 이수를 실시하며, 해당 기준은 졸업조건에 적용됩니다.</p>
+            <p class="hy-text-center"><strong>사회봉사 및 산학협력영역 공통 지정 이수학점</strong></p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center hy-table-blue-head">
+                <thead>
+                  <tr>
+                    <th rowspan="2">대학 및 학과</th>
+                    <th colspan="2">공통 지정</th>
+                  </tr>
+                  <tr>
+                    <th>사회봉사</th>
+                    <th>산학협력교육</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>공학대학 공통</td><td>1</td><td>6</td></tr>
+                  <tr><td>공학대학 건축학전공</td><td>1</td><td>6</td></tr>
+                  <tr><td>공학대학 에너지바이오학과/해양융합공학과</td><td>1</td><td>3</td></tr>
+                  <tr><td>공학대학 융합시스템공학과</td><td>-</td><td>-</td></tr>
+                  <tr><td>공학대학 스마트융합공학부</td><td>-</td><td>-</td></tr>
+                  <tr><td>소프트웨어융합대학 ICT융합학부/인공지능학과</td><td>1</td><td>6</td></tr>
+                  <tr><td>소프트웨어융합대학 컴퓨터학부</td><td>1</td><td>6</td></tr>
+                  <tr><td>소프트웨어융합대학 수리데이터사이언스학과</td><td>1</td><td>3</td></tr>
+                  <tr><td>약학대학</td><td>1</td><td>3</td></tr>
+                  <tr><td>첨단융합대학 공통</td><td>1</td><td>6</td></tr>
+                  <tr><td>첨단융합대학 국방지능정보융합학부 국방전략기술공학과,<br>지능정보양자공학전공, 바이오신약융합학부 분자의약전공</td><td>1</td><td>3</td></tr>
+                  <tr><td>글로벌문화통상대학</td><td>1</td><td>3</td></tr>
+                  <tr><td>커뮤니케이션&amp;컬처대학 광고홍보학과/미디어학과</td><td>1</td><td>3</td></tr>
+                  <tr><td>커뮤니케이션&amp;컬처대학 문화인류학과/문화콘텐츠학과</td><td>1</td><td>3</td></tr>
+                  <tr><td>경상대학 공통</td><td>1</td><td>3</td></tr>
+                  <tr><td>경상대학 경영학부</td><td>1</td><td>3</td></tr>
+                  <tr><td>경상대학 회계세무학과</td><td>-</td><td>-</td></tr>
+                  <tr><td>디자인대학</td><td>1</td><td>3</td></tr>
+                  <tr><td>예체능대학</td><td>1</td><td>3</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="hy-notice">
+              <strong>산학협력영역 인정 교과목</strong>
+              산학협력영역은 캡스톤디자인 교과목과 교양교과목 중 창업교육센터, 학연산클러스터교육팀에서 지정한 교과목을 말합니다.
+            </div>
+
+            <p><strong>1) 캡스톤디자인 교과목</strong></p>
+            <p>캡스톤디자인 교과목으로 취득 가능한 ‘산학협력영역’ 이수학점 수는 아래 표와 같이 제한되어 있습니다.</p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center">
+                <thead>
+                  <tr>
+                    <th rowspan="2">대학 및 학과</th>
+                    <th rowspan="2">산학협력영역<br>이수학점</th>
+                    <th colspan="2">캡스톤디자인 교과목을 통한<br>산학협력영역 최대 이수 가능학점</th>
+                  </tr>
+                  <tr>
+                    <th>2021학번 ~ 2024학번</th>
+                    <th>2025학번 이후</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>공학대학(에너지바이오학과, 해양융합공학과,<br>융합시스템공학과, 스마트융합공학부 제외)</td><td>6</td><td>4</td><td>4</td></tr>
+                  <tr><td>공학대학 에너지바이오학과, 해양융합공학과</td><td>3</td><td>2</td><td>2</td></tr>
+                  <tr><td>공학대학 융합시스템공학과, 스마트융합공학부</td><td>-</td><td>-</td><td>-</td></tr>
+                  <tr><td>소프트웨어융합대학(수리데이터사이언스학과 제외)</td><td>6</td><td>4</td><td>4</td></tr>
+                  <tr><td>소프트웨어융합대학 수리데이터사이언스학과</td><td>3</td><td>2</td><td>2</td></tr>
+                  <tr><td>약학대학</td><td>3</td><td>2</td><td>2</td></tr>
+                  <tr><td>첨단융합대학 신소재·반도체공학전공</td><td>6</td><td>-</td><td>4</td></tr>
+                  <tr><td>첨단융합대학 바이오나노공학전공</td><td>6</td><td>4</td><td>4</td></tr>
+                  <tr><td>첨단융합대학 반도체·디스플레이공학전공(~2024학번)</td><td>3</td><td>2</td><td>-</td></tr>
+                  <tr><td>첨단융합대학 반도체·디스플레이공학전공(2025학번~)</td><td>6</td><td>-</td><td>4</td></tr>
+                  <tr><td>첨단융합대학 분자의약전공, 지능정보양자공학전공</td><td>3</td><td>2</td><td>2</td></tr>
+                  <tr><td>첨단융합대학 국방전략기술공학과(~2024학번)</td><td>6</td><td>4</td><td>-</td></tr>
+                  <tr><td>첨단융합대학 국방전략기술공학과(2025학번~)</td><td>3</td><td>-</td><td>2</td></tr>
+                  <tr><td>국제문화대학</td><td>3</td><td>2</td><td>-</td></tr>
+                  <tr><td>글로벌문화통상대학</td><td>3</td><td>-</td><td>2</td></tr>
+                  <tr><td>커뮤니케이션&amp;컬처대학</td><td>3</td><td>2</td><td>2</td></tr>
+                  <tr><td>경상대학(회계세무학과 제외)</td><td>3</td><td>2</td><td>2</td></tr>
+                  <tr><td>경상대학 회계세무학과</td><td>-</td><td>-</td><td>-</td></tr>
+                  <tr><td>디자인대학</td><td>3</td><td>2</td><td>2</td></tr>
+                  <tr><td>예체능대학(2020학번~)</td><td>3</td><td>2</td><td>2</td></tr>
+                  <tr><td>예체능대학(~2019학번)</td><td>2</td><td>-</td><td>-</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><strong>2) 산학협력영역 지정 교과목</strong></p>
+            <p>교양교과목 중 창업교육센터, 학연산클러스터교육팀에서 지정한 교과목이 산학협력영역 지정 교과목에 해당합니다.</p>
+            <div class="hy-notice hy-notice-warning">
+              <strong>해당강좌 조회 방법</strong>
+              수강신청시스템 → 수강신청 → 상세조회 → 산학협력영역 체크표시 후 조회하시기 바랍니다.
+            </div>
+            <div class="hy-notice">
+              <strong>사회봉사 프로그램 신청</strong>
+              사회봉사 프로그램 신청은 사회봉사단(031-400-4342)에서 별도로 시행합니다.
+            </div>
+            <div class="hy-notice hy-notice-danger">
+              <strong>사회봉사 신청 유의사항</strong>
+              사회봉사 수강신청 가능 학년과 학기는 해당 교육과정 기준을 확인하시기 바랍니다.
+            </div>
+          </div>
+        </details>
+        <details id="hy-career-course" class="hy-accordion">
+          <summary>9) 진로 및 취업교과목 의무이수 안내</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>진로 및 취업교과목 의무이수</strong>
+              2015학년도 1학기부터 해당 학년에 개설된 진로 및 취업교과목을 반드시 이수해야 졸업요건을 갖추게 됩니다.
+            </div>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center">
+                <thead>
+                  <tr>
+                    <th>학년</th>
+                    <th>학기</th>
+                    <th>교과목명</th>
+                    <th>20-24교육과정<br>과목구분</th>
+                    <th>학점</th>
+                    <th>운영 방법</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>IC-PBL과비전설계</td>
+                    <td rowspan="4">교양필수</td>
+                    <td>1</td>
+                    <td>전공교수지도, P/F</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>IC-PBL과취창업을위한진로탐색</td>
+                    <td>1</td>
+                    <td>온라인강좌, P/F</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>IC-PBL과역량계발</td>
+                    <td>1</td>
+                    <td>온라인강좌, P/F</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>1</td>
+                    <td>취업진로세미나</td>
+                    <td>1</td>
+                    <td>전공교수지도, P/F</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-notice">
+              <strong>학년별 필수 이수 교과목</strong>
+              <ul>
+                <li>1학년은 “IC-PBL과비전설계”를 반드시 이수하여야 합니다.</li>
+                <li>2학년은 “IC-PBL과취창업을위한진로탐색”을 반드시 이수하여야 합니다. 변경 전 교과목명은 “진로탐색과진로설계(커리어1)”입니다.</li>
+                <li>3학년은 “IC-PBL과역량계발”을 반드시 이수하여야 합니다. 변경 전 교과목명은 “진로설계와역량계발(커리어2)”입니다.</li>
+                <li>4학년은 “취업진로세미나”를 반드시 이수하여야 합니다.</li>
+              </ul>
+            </div>
+            <div class="hy-notice">
+              <strong>문의처</strong>
+              진로 및 취업교과목 관련 문의는 커리어개발팀(031-400-4315, 4318)으로 문의하시기 바랍니다.
+            </div>
+          </div>
+        </details>
+        <details id="hy-engineering-accreditation" class="hy-accordion">
+          <summary>10) 공학인증 대상 학생의 수강 신청</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>온라인 수강지도 상담 필수</strong>
+              공학인증 대상 학생은 (모의)수강신청 전에 학과 지도교수와의 온라인 수강지도 상담 절차를 반드시 마쳐야 합니다. 온라인 수강지도를 받지 않은 학생은 모의수강신청 및 본 수강신청이 불가합니다.
+            </div>
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>구분</th>
+                    <th>내용</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>대상 학과</td>
+                    <td>공학대학 건설환경공학과, 건축학부 건축공학전공, 교통물류공학과, 해양융합공학과(2021학번부터 대상)</td>
+                  </tr>
+                  <tr>
+                    <td>상담 제외 대상</td>
+                    <td>신입생, 편입생, 공학인증 포기완료자는 온라인 수강지도 상담 필수 대상에서 제외됩니다.</td>
+                  </tr>
+                  <tr>
+                    <td>공지 확인</td>
+                    <td>수강지도상담 관련 공지는 공학교육혁신센터에서 이메일 또는 문자로 안내합니다. 자세한 사항은 HY-in포털 → 교육인증 → 공학인증 → 게시판 → 공지사항 또는 공학교육혁신센터 홈페이지(<a href="http://ioee.hanyang.ac.kr" target="_blank" rel="noopener">http://ioee.hanyang.ac.kr</a>) 공지사항에서 확인할 수 있습니다.</td>
+                  </tr>
+                  <tr>
+                    <td>졸업요건</td>
+                    <td>공학인증 대상자는 공학인증 졸업요건 및 학교 일반졸업요건을 모두 충족해야 졸업이 가능합니다.</td>
+                  </tr>
+                  <tr>
+                    <td>문의처</td>
+                    <td>공학교육혁신센터 031-400-5043</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 수강신청안내 1. 수강신청 일정 -->
+      <section id="hy-schedule" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · SCHEDULE</div>
+            <h2>수강신청 일정</h2>
+            <p class="hy-section-desc">정규학기마다 반복되는 수강신청 흐름을 1학기와 2학기 월별 시기로 확인하시기 바랍니다.</p>
+            <div class="hy-danger-text">
+              <div>* 이수제한, 특수과목구분, 수강인원 등의 정보는 수강신청 이전까지 수정될 수 있습니다.</div>
+              <div>* 본 수강신청 이전에는 수강편람과 수강신청시스템의 최신 정보를 반드시 다시 확인하시기 바랍니다.</div>
+            </div>
+          </div>
+        </div>
+        <div class="hy-cards">
+          <div class="hy-card">
+            <div class="hy-card-label">수강편람 공개</div>
+            <div class="hy-card-date">1학기: 1월 중순<br>2학기: 7월 중순</div>
+            <div class="hy-card-note">수강신청 전 강좌 정보를 확인합니다.</div>
+          </div>
+          <div class="hy-card">
+            <div class="hy-card-label">모의 수강신청</div>
+            <div class="hy-card-date">1학기: 1월 말<br>2학기: 7월 말</div>
+            <div class="hy-card-note">대상별 운영 여부와 신청 환경을 점검합니다.</div>
+          </div>
+          <div class="hy-card">
+            <div class="hy-card-label">본 수강신청</div>
+            <div class="hy-card-date">1학기: 2월 중순<br>2학기: 8월 중순</div>
+            <div class="hy-card-note">학년, 전공, 대상별 지정 순서에 따라 진행합니다.</div>
+          </div>
+          <div class="hy-card">
+            <div class="hy-card-label">학부/대학원 공통교과목</div>
+            <div class="hy-card-date">1학기: 2월 중순 및 2월 말<br>2학기: 8월 중순 및 8월 말</div>
+            <div class="hy-card-note">신청 대상에 따라 운영 시기가 다릅니다.</div>
+          </div>
+          <div class="hy-card">
+            <div class="hy-card-label">개강 후 정정</div>
+            <div class="hy-card-date">1학기: 2월 말 ~ 3월 초<br>2학기: 8월 말 ~ 9월 초</div>
+            <div class="hy-card-note">증원 신청 및 전체학년 정정 기간을 확인합니다.</div>
+          </div>
+        </div>
+
+        <p><strong>수강신청 단계별 운영 기준</strong></p>
+        <div class="hy-table-wrap">
+          <table class="hy-table-center">
+            <thead>
+              <tr><th>구분</th><th>1학기 운영 시기</th><th>2학기 운영 시기</th><th>주요 확인 사항</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>수강편람 공개</td><td>1월 중순</td><td>7월 중순</td><td>강좌 개설 여부, 수업계획서, 이수구분, 수강정원, 이수제한 확인</td></tr>
+              <tr><td>모의수강신청</td><td>1월 말</td><td>7월 말</td><td>접속 환경, 희망 강좌 신청 흐름, 신청내역 조회 여부 확인</td></tr>
+              <tr><td>본 수강신청</td><td>2월 중순</td><td>8월 중순</td><td>학년별·다전공·전체학년·교차수강신청 등 대상별 신청</td></tr>
+              <tr><td>학부/대학원 공통교과목</td><td>2월 중순 및 2월 말</td><td>8월 중순 및 8월 말</td><td>학부생의 대학원 과목 신청 및 대학원생의 학부 과목 신청</td></tr>
+              <tr><td>개강 후 정정</td><td>2월 말 ~ 3월 초</td><td>8월 말 ~ 9월 초</td><td>증원 신청, 교강사 승인, 전체학년 정정, 수강내역 삭제 가능 여부 확인</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="hy-notice hy-notice-warning">
+          <strong>일정 확인 유의사항</strong>
+          <ul>
+            <li>정확한 날짜, 요일, 시간은 해당 학기 학사 공지와 수강신청시스템에 게시되는 내용을 기준으로 합니다.</li>
+            <li>모의수강신청 기간 중 진행된 수강신청 내역은 기간 종료 이후 모두 삭제됩니다.</li>
+            <li>모의수강신청 참여 여부에 따라 개강 후 수강내역 삭제 가능 시점이 달라질 수 있습니다.</li>
+          </ul>
+        </div>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 3. 수강신청 관련 유의사항 -->
+      <section id="hy-cautions" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · CAUTIONS</div>
+            <h2>수강신청 관련 유의사항</h2>
+          </div>
+        </div>
+
+        <details id="hy-curriculum-check" class="hy-accordion" open>
+          <summary>1) 이수 교육과정 확인</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>신청 전 확인</strong>
+              <span>해당년도의 해당 학년에 해당하는 교육과정을 확인하시기 바랍니다. 2026학년도에는 1~2학년은 25-28 교육과정, 3~6학년은 20-23 교육과정이 적용되며 교육과정의 차이에 따라 필수로 이수해야하는 교과목에 차이가 존재할 수 있습니다.</span>
+            </div>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center hy-curriculum-table">
+            <colgroup>
+              <col class="hy-col-course">
+              <col class="hy-col-grade">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-year">
+              <col class="hy-col-note">
+            </colgroup>
+            <thead>
+              <tr>
+                <th rowspan="2">교육과정</th>
+                <th rowspan="2">지정<br>학년</th>
+                <th colspan="13">수업 개설 년도</th>
+                <th rowspan="2">비고</th>
+              </tr>
+              <tr>
+                <th class="hy-year-cell">'20</th>
+                <th class="hy-year-cell">'21</th>
+                <th class="hy-year-cell">'22</th>
+                <th class="hy-year-cell">'23</th>
+                <th class="hy-year-cell">'24</th>
+                <th class="hy-year-cell">'25</th>
+                <th class="hy-year-cell hy-table-accent">'26</th>
+                <th class="hy-year-cell">'27</th>
+                <th class="hy-year-cell">'28</th>
+                <th class="hy-year-cell">'29</th>
+                <th class="hy-year-cell">'30</th>
+                <th class="hy-year-cell">'31</th>
+                <th class="hy-year-cell">'32</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="6">20-23교육과정</td>
+                <td>1</td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-close"></td>
+                <td class="hy-curriculum-close"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>운영종료</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-close"></td>
+                <td class="hy-curriculum-close"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>운영종료</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-current hy-curriculum-current-start">✓</td>
+                <td class="hy-curriculum-close"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-current">✓</td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-close"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-current">✓</td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-close"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-current hy-curriculum-current-end">✓</td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-close"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td rowspan="6">25-28교육과정</td>
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="hy-curriculum-past"></td>
+                <td class="hy-curriculum-current hy-curriculum-current-start">✓</td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="hy-curriculum-current hy-curriculum-current-end">✓</td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td class="hy-curriculum-active"></td>
+                <td></td>
+              </tr>
+            </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details id="hy-department-restriction" class="hy-accordion">
+          <summary>2) 학과 교과목 이수제한 관련</summary>
+          <div class="hy-detail-body">
+            <p>설강학과가 특정 학과로 표시되는 일반과목(전공)은 해당 설강학과에서 이수제한을 관리합니다. 이수제한에 관해서는 해당 설강학과로 문의하시기 바랍니다.</p>
+          </div>
+        </details>
+
+        <details id="hy-parent-course-ban" class="hy-accordion">
+          <summary>3) 교수-자녀간 수강불가(부모 담당 과목 수강신청 금지)</summary>
+          <div class="hy-detail-body">
+            <p>수강신청하고자 하는 과목의 담당 교강사가 부모님일 경우 수강신청이 금지됩니다. 다만, 교육과정 이수와 관련하여 불가피하게 해당 과목을 수강신청해야 할 경우에는 수강신청 기간 전 학생 소속 학과를 통하여 학사운영팀 및 교무팀에 사전 신고가 필요합니다.</p>
+          </div>
+        </details>
+
+        <details id="hy-mock-cancel" class="hy-accordion">
+          <summary>4) 모의수강신청 참여자 수강신청 삭제</summary>
+          <div class="hy-detail-body">
+            <p>모의수강신청 참여자의 경우 증원 신청기간 첫날부터 수강신청 삭제가 가능합니다. 미참여자의 경우 지정일보다 하루 늦게 취소가 가능하오니 반드시 모의수강신청에 참여하시기 바랍니다.</p>
+            <div class="hy-notice hy-notice-warning">
+              <strong>참여 여부 확인</strong>
+              수강신청 시스템 상단의 '모의수강 참여여부 : N' 표시는 참여 후 Y로 변경됩니다. 모의수강신청 참여여부는 모의수강신청 시 1강좌 이상 수강신청을 완료한 후 신청내역에서 정상적으로 조회가 된 경우를 기준으로 합니다.
+            </div>
+          </div>
+        </details>
+
+        <details id="hy-caution-equivalent-course" class="hy-accordion">
+          <summary>5) 동일/대치 교과목 안내</summary>
+          <div class="hy-detail-body">
+            <p>수강신청시스템 기본수업조회 화면에서 「동일/대치교과목확인」 버튼을 통해 본인이 이수한 교과목 중 C+ 이하인 과목의 동일/대치교과목 지정 교과목을 확인할 수 있습니다. 또한 대치 교과목으로 지정된 교과목을 이전에 C+ 이하의 성적으로 이수한 학생은 수강신청 시 재수강, 일반수강 여부를 선택하는 화면이 표시되므로 수강신청 전 동일/대치 여부를 미리 확인하여 수강신청 지연이 발생하지 않도록 해주시기 바랍니다.</p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center">
+                <thead>
+                  <tr><th>구분</th><th>내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>대치과목</td><td>수강신청 시 재수강 또는 신규 수강신청을 선택할 수 있음</td></tr>
+                  <tr><td>동일과목</td><td>학수번호가 동일한 교과목으로 처리되고, 이전 과목 이수 학생은 신규수강 선택권이 없이 재수강으로만 수강이 가능함</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details id="hy-macro-restriction" class="hy-accordion">
+          <summary>6) 매크로 프로그램 사용 제한</summary>
+          <div class="hy-detail-body">
+            <p>수강신청 시 매크로프로그램(자동수강신청) 사용을 제한하기 위해 수강신청 시도가 과도할 경우 매크로프로그램 사용여부를 판단하기 위한 확인 문구를 입력해야만 수강신청을 계속 진행할 수 있습니다.</p>
+            <div class="hy-notice hy-notice-danger">
+              <strong>매크로 사용 의심 시 조치</strong>
+              매크로 사용이 의심되는 경우 정보통신처에서 세부 수강신청 시도 내역 등을 확인한 후 해당 학기 수강신청 전체 교과목 취소 및 경고조치를 취할 수 있습니다. 확인 대상에는 과도한 수강신청 시도, 수강신청 시간이 아님에도 수강신청이 진행된 흔적 등이 포함됩니다.
+            </div>
+          </div>
+        </details>
+
+        <details id="hy-liberal-credit-limit" class="hy-accordion">
+          <summary>7) 개강 전 수강신청 기간 교양학점 신청 제한</summary>
+          <div class="hy-detail-body">
+            <p>교양강좌 선점 및 매매를 방지하기 위해 개강 전 수강신청 기간에는 교양 수업을 최대 10학점까지만 신청 가능합니다. 개강 후 신청기간에는 제한 없이 신청 가능합니다.</p>
+          </div>
+        </details>
+
+        <details id="hy-caution-code-share" class="hy-accordion">
+          <summary>8) 학과간 공통 교육과정(Code Share)</summary>
+          <div class="hy-detail-body">
+            <p>학부의 학과 간 공통교육과정은 타 학과 교육과정의 과목을 전공으로 인정하는 제도입니다. 학과 간 공통교육과정은 기본수업조회 하단에 별도로 표시되고(타학과전공인정교과목), 해당 과목 수강 시 신청내역에 표시된 전공 이수구분으로 인정됩니다.</p>
+          </div>
+        </details>
+
+        <details id="hy-system-failure" class="hy-accordion">
+          <summary>9) 수강신청 시스템 장애 발생시</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>수강신청시스템 장애의 정의</strong>
+              일부 PC의 문제가 아닌 정보통신처에서 판단되는 서버 장애 상태를 말하며, 한양인(HY-in) 로그인 화면에 장애 사항이 공지된 경우만 해당합니다.
+            </div>
+            <p><strong>수강신청시스템 장애 발생 시 처리</strong></p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center">
+                <thead>
+                  <tr><th>구분</th><th>처리 기준</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>수강신청 시작 시점부터 30분 이내</td><td>한양인(HY-in) 로그인 화면에 전체 서버 장애 공지 시 수강신청 시스템은 중지되고, 장애 발생 시점까지의 수강신청은 무효 처리됩니다.</td></tr>
+                  <tr><td>수강신청 시작 시점부터 30분 이후</td><td>한양인(HY-in) 로그인 화면에 전체 서버 장애 공지 시 수강신청 시스템은 중지되고, 기존 수강신청 내역은 유지됩니다.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-notice">
+              <strong>수강신청시스템 복구 및 재시작 공지</strong>
+              시스템 중단 후 재시작 시간은 한양인(HY-in) 로그인 화면에 별도 공지됩니다.
+            </div>
+          </div>
+        </details>
+
+        <details id="hy-course-sale" class="hy-accordion">
+          <summary>10) 강의 매매 관련</summary>
+          <div class="hy-detail-body">
+            <p>A학생이 수강 취소를 하고 발생한 여석을 B학생이 잡는 것은 시스템상 불가능합니다. 수강취소분의 시스템 반영은 완벽하게 난수로 이루어져 있습니다. 수강신청 종료 직전 취소를 하더라도 해당 시스템은 마찬가지로 적용됩니다.</p>
+            <div class="hy-notice hy-notice-danger">
+              <strong>강의매매 적발 시 조치</strong>
+              학사운영팀은 수강신청기간 에브리타임 등 교내 커뮤니티를 모니터링 중입니다. 강의매매 적발 시 수강신청 내역이 모두 취소되며 징계 처리될 수 있는 사안임을 안내드립니다.
+            </div>
+          </div>
+        </details>
+
+        <details id="hy-cross-campus" class="hy-accordion" open>
+          <summary>11) ERICA-서울 교차수강신청 안내</summary>
+          <div class="hy-detail-body">
+            <p>ERICA와 서울캠퍼스 간 교차수강신청은 지정된 대상 교과목과 잔여석 범위에서 운영됩니다. 교과목별 신청 가능 여부와 이수구분 인정 여부는 수강편람과 수강신청시스템에서 반드시 확인하시기 바랍니다.</p>
+            <div class="hy-notice hy-notice-danger">
+              <strong>교차수강신청 제외 대상</strong>
+              <ul>
+                <li>양 캠퍼스에 동일한 학수번호로 개설된 교과목은 교차수강 대상에서 제외됩니다.</li>
+                <li>양 캠퍼스 교양필수, 교직과목, 일부 학점교류 E-러닝 강좌 등은 제외될 수 있습니다.</li>
+                <li>과목 안내에 따라 이수제한 또는 별도 제약사항이 있는 교과목은 수강신청이 불가할 수 있습니다.</li>
+              </ul>
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>교차수강신청 유의사항</strong>
+              <ul>
+                <li>전공 교과목은 심사 결과에 따라 전공으로 인정되지 않을 수 있습니다.</li>
+                <li>주전공의 전공학점으로만 이수구분 변경이 가능한지 여부를 확인해야 합니다.</li>
+                <li>개강 후 수강 정정기간에는 교차수강신청 교과목의 취소만 가능할 수 있습니다.</li>
+              </ul>
+            </div>
+            <p class="hy-text-center"><strong>교차수강신청 학점인정 절차 안내</strong></p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center">
+                <thead>
+                  <tr><th>순번</th><th>시기</th><th>구분</th><th>내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>교차수강신청 지정일</td><td>학생</td><td>잔여석이 있는 신청 가능 교과목 수강신청</td></tr>
+                  <tr><td>2</td><td>신청 마감 후</td><td>행정팀</td><td>전공구분 인정 심의</td></tr>
+                  <tr><td>3</td><td>개강 후 정정 및 증원기간</td><td>학생</td><td>심의 결과에 따라 수강신청 유지 또는 취소</td></tr>
+                  <tr><td>4</td><td>성적 확정 후</td><td>학사운영팀</td><td>심의 결과에 따라 이수구분 변경 처리</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details id="hy-increase-request" class="hy-accordion">
+          <summary>12) 증원신청 시스템 이용 안내</summary>
+          <div class="hy-detail-body">
+            <div class="hy-actions hy-doc-actions">
+              <a class="hy-btn" href="https://drive.google.com/file/d/1zvaL5ByH3jl8YR20mFBsnaHgWwKd8v0A/view?usp=sharing" target="_blank" rel="noopener">수강증원 시스템 안내 (클릭)</a>
+              <a class="hy-btn" href="https://drive.google.com/file/d/1N1DnbsbCsRk_WG5A1r-ma7caiOwWUomg/view?usp=sharing" target="_blank" rel="noopener">Application for Course Enrollment Increase(Student Guide) (Click)</a>
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>증원 신청 가능 과목</strong>
+              학과에 설강된 교과목에 한하여 증원 신청 및 승인이 가능합니다. 교양교과목 등 공통영역 설강 과목은 증원 신청이 불가합니다.
+            </div>
+            <p><strong>증원신청 운영 흐름</strong></p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center">
+                <thead>
+                  <tr><th>구분</th><th>1학기 운영 시기</th><th>2학기 운영 시기</th><th>내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>학생 신청</td><td>2월 말 ~ 3월 초</td><td>8월 말 ~ 9월 초</td><td>학생이 증원신청 시스템을 통해 신청</td></tr>
+                  <tr><td>교강사 승인</td><td>2월 말 ~ 3월 초</td><td>8월 말 ~ 9월 초</td><td>담당 교강사가 신청 내역 확인 후 승인</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-table-wrap">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="hy-text-center"><strong>증원신청 시 유의사항</strong></p>
+                      <ol>
+                        <li>학과에 설강된 교과목에 한하여 증원 신청 및 승인이 가능합니다. 교양교과목은 증원 시스템을 이용할 수 없습니다.</li>
+                        <li>기존에 수강신청이 되어 있는 학수번호가 동일한 교과목은 중복 신청이 불가능합니다.</li>
+                        <li>기존 수강신청 내역과 증원신청 교과목의 학점 합계는 최대 수강신청 가능학점을 초과할 수 없습니다.</li>
+                        <li>교강사 승인으로 수강신청이 완료된 경우, 기존 시간표와 일부라도 시간이 중복되는 교과목은 삭제됩니다.</li>
+                        <li>증원신청 후 교강사 승인 처리된 교과목은 교강사가 다시 반려할 수 있으나, 삭제된 수강신청 내역은 복원되지 않으니 주의하시기 바랍니다.</li>
+                        <li>교강사가 반려한 증원신청은 다시 승인으로 변경할 수 없습니다.</li>
+                        <li>증원신청 후 교강사 승인으로 수강신청 처리된 과목은 학생 본인 취소는 불가하며 교강사의 반려로만 철회가 가능합니다.</li>
+                        <li>증원 허용 여부 및 신청대상은 교강사가 결정하므로, 관련 사항은 담당 교강사에게 직접 문의하시기 바랍니다.</li>
+                      </ol>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 4. 수강신청과 온라인 환경 -->
+      <section id="hy-online" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · ONLINE ENVIRONMENT</div>
+            <h2>수강신청과 온라인 환경</h2>
+          </div>
+        </div>
+        <div class="hy-notice hy-notice-warning">
+          <strong>브라우저 및 사전 점검</strong>
+          수강신청은 엣지, 크롬(윈도우), 사파리(맥/윈도우), 파이어폭스(윈도우) 등에서 사용 가능합니다. 반드시 모의수강신청을 통하여 본인의 PC 및 브라우저 환경을 사전 점검하시기 바랍니다. 브라우저 오류로 인한 책임은 신청자 본인에게 있습니다.
+        </div>
+
+        <details class="hy-accordion" open>
+          <summary>1) 접속 및 로그인 환경</summary>
+          <div class="hy-detail-body">
+            <p>차세대 수강신청시스템에서는 수강신청 시작시간 이전에 미리 로그인하여 대기 후, 수강신청 시작시간이 되면 바로 과목별 수강신청 버튼을 클릭하여 수강신청이 가능합니다.</p>
+            <div class="hy-notice">
+              <strong>자동 로그아웃 유의사항</strong>
+              로그인 후 1시간 동안 마우스 클릭이나 입력이 없으면, 1시간 이후 마우스 클릭이나 입력이 있을 때 로그아웃 페이지로 이동합니다.
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>이중 로그인</strong>
+              같은 학번으로 이중 로그인을 하게 되면 먼저 접속되어 있는 PC의 연결이 끊어집니다.
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>2) 개인정보관리</summary>
+          <div class="hy-detail-body">
+            <p>수강신청 기간에 개인 아이디 및 비밀번호 관리 소홀로 인한 피해를 입을 수 있으며, 수강권 등 사생활 보호를 위해 패스워드를 수시로 변경하여 주시기 바랍니다.</p>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>3) 대량트래픽제어시스템 적용</summary>
+          <div class="hy-detail-body">
+            <p>매우 많은 학생들이 동 시간에 집중되어 수강신청 시스템의 처리 가능 범위를 초과한 경우, 수강신청/수강삭제 버튼 클릭 시 '실시간 대기자 수 및 예상 대기시간'을 팝업 화면으로 안내합니다.</p>
+            <div class="hy-notice hy-notice-warning">
+              <strong>대기 순위 유의사항</strong>
+              이로 인하여 매크로프로그램 및 새로고침 버튼 사용, 수강신청/수강삭제 실행 중 해당 버튼을 다시 클릭할 경우 서비스 신청 순위가 뒤로 밀리게 되어 대기시간이 그만큼 늘어납니다.
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>4) 제한사항</summary>
+          <div class="hy-detail-body">
+            <div class="hy-table-wrap">
+              <table>
+                <thead>
+                  <tr><th>구분</th><th>내용</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>수강신청 매매행위 금지</td>
+                    <td>수강신청 매매 행위는 학칙에 의해 처벌받으며, 지정된 방법 이외의 방법으로 수강신청 도중 발생하는 불이익에 대하여 학교에서 책임지지 않습니다.</td>
+                  </tr>
+                  <tr>
+                    <td>유해 프로그램 사용금지</td>
+                    <td>수강신청 시 매크로 프로그램을 비롯한 유해 프로그램을 이용하여 학교 수강신청 서버장애를 유발하거나 타인에게 피해를 주는 행위가 발견될 경우, 수강신청 내역 전체를 삭제 처리함은 물론 별도로 징계를 받을 수도 있습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>5) 수강신청시스템 접속 메뉴</summary>
+          <div class="hy-detail-body">
+            <p>아래 4가지 방법 모두 가능합니다.</p>
+            <ol>
+              <li>한양대 홈페이지 하단의 ‘수강신청시스템’ 배너를 통해 접속하여 로그인 후 조회 및 신청</li>
+              <li>한양대 홈페이지 하단의 ‘사이트 바로가기 → 수강신청시스템(수강편람)’ 접속하여 로그인 후 조회 및 신청</li>
+              <li>HY-in 로그인 화면 우측의 '수강신청 바로가기' 클릭</li>
+              <li>수강신청 기간 동안에는 HY-in 로그인 화면 접근 시 수강신청시스템으로 연결되는 팝업창을 통해 수강신청시스템에 접속</li>
+            </ol>
+          </div>
+        </details>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 5. 수강신청 가능 학점 -->
+      <section id="hy-credits" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · CREDIT LIMIT</div>
+            <h2>수강신청 가능 학점</h2>
+          </div>
+        </div>
+        <div class="hy-notice hy-notice-danger">
+          <strong>수강신청 학점 유의사항</strong>
+          수강신청 최대/최소학점에서 초과 또는 미달(미수강신청자 포함)될 경우 수강신청 전부가 무효화되며 해당 학기 평점은 0.00으로 처리됩니다.
+        </div>
+
+        <details id="hy-credit-before-25" class="hy-accordion" open>
+          <summary>1) 25학번 이하</summary>
+          <div class="hy-detail-body">
+            <ul>
+              <li>수강신청 최소/최대 학점은 10학점 ~ 20학점입니다. 단, 약학과는 최대 22학점, 스마트융합공학부는 최대 23학점입니다.</li>
+              <li>다전공자가 제1전공이 아닌 타 학과의 전공과목을 수강신청할 경우 최대 3학점까지 추가 신청 가능합니다.</li>
+              <li>조기졸업(7학기)의 경우에는 수강신청 최소학점 10학점을 준수해야 합니다. 3학점이 가능한 학기는 일반 졸업기준의 졸업예정학기부터 가능합니다.</li>
+            </ul>
+            <p class="hy-text-center"><strong>25학번 이하 수강신청 학점 기준</strong></p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center hy-table-blue-head">
+                <thead>
+                  <tr>
+                    <th>구분</th>
+                    <th>수강신청<br>최소 학점</th>
+                    <th>수강신청 시작 시<br>최대 수강 신청 가능 학점</th>
+                    <th>수강신청 종료 시<br>최대 수강 신청 가능 학점</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1학기 ~ 7학기</td>
+                    <td>10학점</td>
+                    <td rowspan="3">20학점</td>
+                    <td rowspan="3">20학점 +<br><br>다전공자가 주전공 이외의 과목 수강 시<br>최대 추가 3학점 +<br><br>사회봉사 신청 시 추가 1학점 +<br><br>ROTC필수 교과목 신청 시 추가 2학점</td>
+                  </tr>
+                  <tr>
+                    <td>졸업예정학기</td>
+                    <td>3학점</td>
+                  </tr>
+                  <tr>
+                    <td>학업연장재수강자</td>
+                    <td>1학점</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details id="hy-credit-after-26" class="hy-accordion" open>
+          <summary>2) 26학번 이후</summary>
+          <div class="hy-detail-body">
+            <p>매 학년 매 학기의 수강신청은 최소 10학점 이상이어야 하며, 1,2학년은 최대 20학점, 3학년 이상은 최대 18학점을 초과할 수 없습니다.</p>
+            <div class="hy-table-wrap">
+              <table class="hy-table-center">
+                <thead>
+                  <tr><th>대상</th><th>일반 학기<br>최소 학점</th><th>수강신청 시작 시<br>최대 학점</th><th>수강신청 종료 시<br>최대 학점</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>일반 1,2학년</td><td>10학점</td><td>20학점</td><td>20학점 + 추가 신청 가능학점</td></tr>
+                  <tr><td>일반 3학년 이상</td><td>10학점</td><td>18학점</td><td>18학점 + 추가 신청 가능학점</td></tr>
+                  <tr><td>학업연장재수강자</td><td>1학점</td><td>소속 학년/학과 기준</td><td>소속 학년/학과 기준 + 추가 신청 가능학점</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="hy-notice hy-notice-warning">
+              <strong>수강신청 종료 시 추가 신청 가능학점</strong>
+              26학번 이후에도 수강신청 종료 시 최대 수강신청 가능학점은 수강신청 시작 시 최대 학점에서 다전공자가 주전공 이외의 과목 수강 시 최대 3학점, 사회봉사 신청 시 추가 1학점, ROTC필수 교과목 신청 시 추가 2학점까지 동일하게 추가 적용됩니다.
+            </div>
+            <div class="hy-notice">
+              <strong>학과별 예외 기준</strong>
+              공학대학 건축학전공은 최소 10학점, 최대 20학점이며, 스마트융합공학부는 최소 10학점, 최대 23학점, 약학대학은 최소 10학점, 최대 22학점입니다.
+            </div>
+            <div class="hy-notice">
+              <strong>정규 편제 최종학기 기준</strong>
+              정규 편제 최종학기의 최소 수강신청 학점은 3학점으로 합니다. 공학대학 건축학전공은 최소 3학점, 최대 20학점, 스마트융합공학부는 최소 10학점, 최대 23학점, 약학대학은 최소 3학점, 최대 22학점입니다.
+            </div>
+          </div>
+        </details>
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+
+<!-- 수강신청안내 6. 수강포기 관련 안내 -->
+      <section id="hy-course-withdrawal" class="hy-section">
+        <div class="hy-section-head">
+          <div>
+            <div class="hy-kicker">수강신청안내 · COURSE WITHDRAWAL</div>
+            <h2>수강포기 관련 안내</h2>
+            <p class="hy-section-desc">수강신청 최소학점을 초과하여 수강 중인 특정과목의 수강신청을 취소하는 제도입니다.</p>
+          </div>
+        </div>
+
+        <p>수강포기제는 수강신청 최소학점을 초과하여 수강 중인 특정 과목을 지정 기간 안에 취소할 수 있도록 운영하는 제도입니다.</p>
+
+        <div class="hy-notice hy-notice-warning">
+          <strong>수강포기 처리 기준</strong>
+          수강포기를 한 과목은 수강신청 내역이 삭제되어 수강신청을 하지 않은 상태와 동일합니다.
+        </div>
+
+        <details class="hy-accordion" open>
+          <summary>1) 수강포기 기간</summary>
+          <div class="hy-detail-body">
+            <p>수강포기는 학기 중 지정기간에만 가능하며, 정확한 기간은 해당 학기 학사 공지와 수강신청시스템 안내를 기준으로 합니다.</p>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>2) 수강포기 대상 학생</summary>
+          <div class="hy-detail-body">
+            <ul>
+              <li>수강신청 최소학점을 초과하여 수강신청을 한 학생 중 수강포기를 원하는 과목이 있는 ERICA캠퍼스 학부 재학생</li>
+            </ul>
+            <div class="hy-notice hy-notice-danger">
+              <strong>수강포기 불가 대상</strong>
+              학사학위취득유예자는 수강신청 여부와 관계없이 수강포기가 불가능합니다.
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>3) 수강포기 가능 범위</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-warning">
+              <strong>잔여학점 기준</strong>
+              수강포기 후 잔여학점이 수강신청 최소학점 이상(사회봉사 포함)이어야 합니다.
+            </div>
+            <ul>
+              <li>최소수강신청학점 기준을 충족하지 못하는 경우 수강포기가 불가합니다.</li>
+              <li>학점교류 학생은 학점교류대학에서 수강하는 학점을 제외하고 교내 수강학점만으로 수강신청 최소학점을 계산하여 포기 가능 여부를 결정합니다.</li>
+            </ul>
+            <div class="hy-notice hy-notice-danger">
+              <strong>포기 가능 과목 수</strong>
+              포기 과목은 2과목으로 제한됩니다.
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>4) 수강포기 제한 과목</summary>
+          <div class="hy-detail-body">
+            <ul>
+              <li>사회봉사</li>
+              <li>사이버강좌(한양사이버대학 강좌, 서울권역-e러닝센터 강좌, 사이버토익 등)</li>
+              <li>학점교류 강좌(본교생 타교 수강 및 타교생 본교 수강 모두 제외)</li>
+              <li>서울캠퍼스 강좌</li>
+            </ul>
+            <div class="hy-notice">
+              <strong>수강포기 가능 예외</strong>
+              단, 사이버강좌 중 K-MOOC 강좌(학점교류 E-러닝M)는 수강 포기가 가능합니다.
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>5) 수강포기 신청 시 주의사항</summary>
+          <div class="hy-detail-body">
+            <div class="hy-notice hy-notice-danger">
+              <strong>신청 전 유의사항</strong>
+              <ul>
+                <li>수강포기 기간 엄수(기간 외 포기 절대 불가)</li>
+                <li>수강포기 기간에는 수강신청이 불가합니다.</li>
+                <li>졸업유보자(학위취득유예자)는 수강포기가 불가합니다.</li>
+                <li>학업연장재수강자는 현행 기준에 따라 수강포기 가능 여부를 확인하시기 바랍니다.</li>
+              </ul>
+            </div>
+            <ul>
+              <li>수강포기한 과목은 다시 수강 신청할 수 없습니다.</li>
+              <li>수강포기한 과목은 직후 계절학기부터 정상적으로 수강신청 가능합니다.</li>
+            </ul>
+            <div class="hy-notice hy-notice-warning">
+              <strong>학업연장재수강자 등록금 납부 유의사항</strong>
+              수강포기를 하는 학업연장재수강자는 수강포기 진행 마감 후 등록금고지서를 출력하여 납부해야 합니다. 등록일정 관련 안내는 재무팀 사이트(<a href="http://finance.hanyang.ac.kr/-12" target="_blank" rel="noopener">http://finance.hanyang.ac.kr/-12</a>)를 확인하시기 바랍니다.
+            </div>
+          </div>
+        </details>
+
+        <details class="hy-accordion" open>
+          <summary>6) 신청방법</summary>
+          <div class="hy-detail-body">
+            <ol>
+              <li>수강신청시스템 접속</li>
+              <li>수강신청시스템 → 신청내역 메뉴 클릭</li>
+              <li>수강신청 포기할 과목 앞에 ‘수강포기’ 버튼 선택</li>
+            </ol>
+            <div class="hy-notice hy-notice-warning">
+              <strong>포기권한 안내</strong>
+              수강포기 불가사항에 해당하는 경우 포기권한이 없습니다.
+            </div>
+            <div class="hy-notice hy-notice-danger">
+              <strong>포기취소 및 재신청 불가</strong>
+              한번 수강포기를 선택한 과목은 포기취소 및 재신청이 불가하니 신중히 결정하시기 바랍니다.
+            </div>
+            <div class="hy-notice">
+              <strong>수강신청내역 확인</strong>
+              수강포기 후에는 반드시 신청내역을 다시 조회하여 수강포기가 잘 되었는지 확인해야 합니다.
+            </div>
+          </div>
+        </details>
+
+        <a class="hy-backtop" href="#hy-top">맨 위로 ↑</a>
+      </section>
+    </main>
+  </div>
+</div>
+
+
+<script>
+(function () {
+  var root = document.getElementById('hy-course-guide');
+  if (!root) return;
+
+  /* 안내 메뉴 키워드 검색 */
+  var nav = root.querySelector('.hy-nav');
+  var content = root.querySelector('.hy-content');
+  var searchInput = root.querySelector('#hy-nav-search-input');
+  var searchStatus = root.querySelector('.hy-nav-search-status');
+  var navTopLinks = nav ? Array.prototype.filter.call(nav.children, function (item) {
+    return item.tagName && item.tagName.toLowerCase() === 'a';
+  }) : [];
+  var navGroups = nav ? Array.prototype.slice.call(nav.querySelectorAll('.hy-nav-group')) : [];
+
+  navGroups.forEach(function (group) {
+    group.setAttribute('data-hy-initial-open', group.open ? '1' : '0');
+  });
+
+  function refreshNavScroll() {
+    if (!nav) return;
+
+    window.requestAnimationFrame(function () {
+      var maxScrollTop = Math.max(0, nav.scrollHeight - nav.clientHeight);
+      if (nav.scrollTop > maxScrollTop) nav.scrollTop = maxScrollTop;
+    });
+  }
+
+  function keepNavGroupInView(group) {
+    if (!nav || !group || !group.open) return;
+
+    window.requestAnimationFrame(function () {
+      var navRect = nav.getBoundingClientRect();
+      var navStyle = window.getComputedStyle(nav);
+      var paddingTop = parseFloat(navStyle.paddingTop) || 0;
+      var paddingBottom = parseFloat(navStyle.paddingBottom) || 0;
+      var visibleTop = navRect.top + paddingTop;
+      var visibleBottom = navRect.bottom - paddingBottom;
+      var groupRect = group.getBoundingClientRect();
+      var summary = group.querySelector('summary');
+      var summaryRect = summary ? summary.getBoundingClientRect() : groupRect;
+
+      if (groupRect.height > visibleBottom - visibleTop) {
+        if (summaryRect.top < visibleTop || summaryRect.bottom > visibleBottom) {
+          nav.scrollTop += summaryRect.top - visibleTop;
+        }
+        return;
+      }
+
+      if (groupRect.top < visibleTop) {
+        nav.scrollTop -= visibleTop - groupRect.top;
+      } else if (groupRect.bottom > visibleBottom) {
+        nav.scrollTop += groupRect.bottom - visibleBottom + 8;
+      }
+    });
+  }
+
+  navGroups.forEach(function (group) {
+    group.addEventListener('toggle', function () {
+      keepNavGroupInView(group);
+    });
+  });
+
+  function normalizeKeyword(text) {
+    return (text || '').replace(/\s+/g, ' ').trim().toLowerCase();
+  }
+
+  function getTargetText(link) {
+    var href = link.getAttribute('href');
+    if (!href || href.charAt(0) !== '#') return '';
+    var target = root.querySelector(href);
+    return target ? target.textContent : '';
+  }
+
+  function getSearchText(link) {
+    if (typeof link._hySearchText === 'string') return link._hySearchText;
+    link._hySearchText = normalizeKeyword(link.textContent + ' ' + getTargetText(link));
+    return link._hySearchText;
+  }
+
+  function clearSearchHighlights() {
+    if (!content) return;
+
+    var highlights = Array.prototype.slice.call(content.querySelectorAll('mark.hy-search-highlight'));
+    highlights.forEach(function (mark) {
+      var parent = mark.parentNode;
+      if (!parent) return;
+      parent.replaceChild(document.createTextNode(mark.textContent), mark);
+      parent.normalize();
+    });
+
+    Array.prototype.slice.call(content.querySelectorAll('details[data-hy-highlight-opened="1"]')).forEach(function (details) {
+      details.open = false;
+      details.removeAttribute('data-hy-highlight-opened');
+    });
+  }
+
+  function highlightTextNode(textNode, keyword) {
+    var text = textNode.nodeValue;
+    var lowerText = text.toLowerCase();
+    var lowerKeyword = keyword.toLowerCase();
+    var keywordLength = keyword.length;
+    var index = lowerText.indexOf(lowerKeyword);
+    var lastIndex = 0;
+    var count = 0;
+    var fragment = document.createDocumentFragment();
+
+    while (index > -1) {
+      if (index > lastIndex) {
+        fragment.appendChild(document.createTextNode(text.slice(lastIndex, index)));
+      }
+
+      var mark = document.createElement('mark');
+      mark.className = 'hy-search-highlight';
+      mark.textContent = text.slice(index, index + keywordLength);
+      fragment.appendChild(mark);
+
+      count += 1;
+      lastIndex = index + keywordLength;
+      index = lowerText.indexOf(lowerKeyword, lastIndex);
+    }
+
+    if (lastIndex < text.length) {
+      fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+    }
+
+    textNode.parentNode.replaceChild(fragment, textNode);
+    return count;
+  }
+
+  function setSearchHighlights(keyword) {
+    clearSearchHighlights();
+    if (!content || !keyword) return 0;
+
+    var nodes = [];
+    var walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        var parent = node.parentNode;
+        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (parent && parent.closest && parent.closest('mark.hy-search-highlight')) return NodeFilter.FILTER_REJECT;
+        return node.nodeValue.toLowerCase().indexOf(keyword.toLowerCase()) > -1
+          ? NodeFilter.FILTER_ACCEPT
+          : NodeFilter.FILTER_REJECT;
+      }
+    });
+    var node;
+    var highlightCount = 0;
+
+    while ((node = walker.nextNode())) {
+      nodes.push(node);
+    }
+
+    nodes.forEach(function (textNode) {
+      highlightCount += highlightTextNode(textNode, keyword);
+    });
+
+    Array.prototype.slice.call(content.querySelectorAll('mark.hy-search-highlight')).forEach(function (mark) {
+      var details = mark.closest ? mark.closest('details.hy-accordion') : null;
+      if (details && !details.open) {
+        details.open = true;
+        details.setAttribute('data-hy-highlight-opened', '1');
+      }
+    });
+
+    return highlightCount;
+  }
+
+  function setNavSearchResult() {
+    if (!searchInput || !nav) return;
+
+    var keyword = normalizeKeyword(searchInput.value);
+    var resultCount = 0;
+    var highlightCount = setSearchHighlights(keyword);
+
+    navTopLinks.forEach(function (link) {
+      var matched = !keyword || getSearchText(link).indexOf(keyword) > -1;
+      link.style.display = matched ? '' : 'none';
+      if (keyword && matched) resultCount += 1;
+    });
+
+    navGroups.forEach(function (group) {
+      var summary = group.querySelector('summary');
+      var subLinksInGroup = Array.prototype.slice.call(group.querySelectorAll('.hy-nav-sub a'));
+      var summaryMatched = summary && normalizeKeyword(summary.textContent).indexOf(keyword) > -1;
+      var subMatchedCount = 0;
+
+      subLinksInGroup.forEach(function (link) {
+        var matched = !keyword || summaryMatched || getSearchText(link).indexOf(keyword) > -1;
+        link.style.display = matched ? '' : 'none';
+        if (keyword && matched) subMatchedCount += 1;
+      });
+
+      var groupMatched = !keyword || summaryMatched || subMatchedCount > 0;
+      group.style.display = groupMatched ? '' : 'none';
+
+      if (keyword && groupMatched) {
+        group.open = true;
+        group.setAttribute('data-hy-search-opened', '1');
+        if (summaryMatched && subMatchedCount === 0) resultCount += 1;
+        else resultCount += subMatchedCount;
+      } else if (!keyword && group.getAttribute('data-hy-search-opened') === '1') {
+        group.open = group.getAttribute('data-hy-initial-open') === '1';
+        group.removeAttribute('data-hy-search-opened');
+      }
+    });
+
+    if (searchStatus) {
+      searchStatus.textContent = keyword
+        ? (resultCount ? resultCount + '개 항목 · 본문 ' + highlightCount + '곳 표시' : '검색 결과 없음')
+        : '';
+    }
+
+    refreshNavScroll();
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', setNavSearchResult);
+    searchInput.addEventListener('keydown', function (event) {
+      if (event.key !== 'Enter') return;
+      var firstVisibleLink = Array.prototype.slice.call(nav.querySelectorAll('a')).filter(function (link) {
+        return link.offsetParent !== null;
+      })[0];
+      if (firstVisibleLink) {
+        event.preventDefault();
+        firstVisibleLink.click();
+      }
+    });
+  }
+
+  /* 하위 메뉴 링크를 클릭하면 해당 details를 자동으로 펼침 */
+  var subLinks = Array.prototype.slice.call(root.querySelectorAll('.hy-nav-sub a'));
+  subLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      var target = root.querySelector(link.getAttribute('href'));
+      if (target && target.tagName.toLowerCase() === 'details') {
+        target.open = true;
+      }
+    });
+  });
+
+  /* URL 해시로 직접 접근한 경우에도 해당 details를 펼침 */
+  function openHashTarget() {
+    if (!window.location.hash) return;
+    var target = root.querySelector(window.location.hash);
+    if (target && target.tagName.toLowerCase() === 'details') {
+      target.open = true;
+    }
+  }
+  openHashTarget();
+  window.addEventListener('hashchange', openHashTarget);
+})();
+</script>
+
+</body>
+</html>
